@@ -19,7 +19,7 @@ import {
 import TRANSLATIONS from '../translations'
 
 class SelectInsightPage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('Insight Page')
   }
 
@@ -51,17 +51,8 @@ class SelectInsightPage extends React.Component {
           <ListHeader>
             Preconfigured Nodes
           </ListHeader>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer.zensystem.io/insight-api-zen/')}>
-            zensystem.io
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer2.zensystem.io/insight-api-zen/')}>
-            zensystem2.io
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('http://explorer.zenmine.pro/insight-api-zen/')}>
-            zenmine.pro
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer.zen-solutions.io/api/')}>
-            explorer.zen-solutions.io
+          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
+            mining4.co.uk
           </ListItem>
         </List>
       </Page>

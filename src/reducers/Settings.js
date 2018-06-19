@@ -12,8 +12,8 @@ import {
 } from '../actions/Settings'
 
 const initialSettings = {
-  insightAPI: 'https://explorer.zensystem.io/insight-api-zen/',
-  explorerURL: 'https://explorer.zensystem.io/',
+  insightAPI: 'https://zero-insight.mining4.co.uk/insight-api-zcash/',
+  explorerURL: 'https://zero-insight.mining4.co.uk/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
   pin: null

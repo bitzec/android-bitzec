@@ -1,7 +1,7 @@
 {
-  "name": "zencash-mobile",
+  "name": "zero-mobile",
   "version": "0.0.13",
-  "description": "Mobile Wallet for ZENCash",
+  "description": "Mobile Wallet for ZERO",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --progress --content-base www/",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZencashOfficial/zencash-mobile.git"
+    "url": "git+https://github.com/Cryptoforge/zero-mobile.git"
   },
   "author": "Kendrick Tan <kendricktan0814@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ZencashOfficial/zencash-mobile/issues"
+    "url": "https://github.com/Cryptoforge/zero-mobile/issues"
   },
-  "homepage": "https://zensystem.io",
+  "homepage": "https://zerocurrency.io",
   "devDependencies": {
     "autoprefixer": "^7.1.3",
     "axios": "^0.17.1",
@@ -86,7 +86,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-wkwebview-engine": "^1.1.4",
     "danielsogl-cordova-plugin-clipboard": "^1.0.2",
-    "zencashjs": "^1.1.9-a"
+    "zencashjs": "git+https://github.com/joshyOcuk/btczjs.git"
   },
   "cordova": {
     "plugins": {

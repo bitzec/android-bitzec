@@ -13,7 +13,7 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Lähtevä'
   },
   MainPage: {
-    title: 'ZEN Wallet',
+    title: 'ZER Wallet',
     value: 'Arvo',
     send: 'Lähetä',
     received: 'Vastaanotettu',
@@ -25,7 +25,7 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopioi osoite leikepöydälle'
   },
   SendPage: {
-    title: 'Lähetä ZEN',
+    title: 'Lähetä ZER',
     payTo: 'Vastaanottaja',
     amountToPay: 'Lähetettävä määrä',
     balance: 'Saldo',
@@ -38,7 +38,7 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Lähetä',
     txSuccessful: 'Lähetys onnistunut! Tästä painamalla näet tapahtuman.',
-    confirmSend: 'Haluan lähettää nämä ZEN',
+    confirmSend: 'Haluan lähettää nämä ZER',
     invalidAddress: 'Virheellinen vastaanottajan osoite. Vain läpinäkyvät osoitteet on sallittu.',
     invalidAmount: 'Virheellinen määrä.',
     invalidFee: 'Virheellinen palkkio. Valitse 0 :)',
@@ -79,8 +79,8 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Vaihda PIN',
-    newPinPageTitle: 'ZEN Wallet määrittäminen',
-    verifyPinPageTitle: 'ZEN Wallet PIN-kysely',
+    newPinPageTitle: 'ZER Wallet määrittäminen',
+    verifyPinPageTitle: 'ZER Wallet PIN-kysely',
     setupNewPin: 'Anna uusi PIN',
     reenterPin: 'Vahvista uusi PIN',
     pinsNotSimilar: 'Annetut PIN-luvut eivät täsmää',

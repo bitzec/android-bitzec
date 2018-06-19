@@ -13,7 +13,7 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Out'
   },
   MainPage: {
-    title: 'ZEN Wallet',
+    title: 'ZER Wallet',
     value: 'Value',
     send: 'Send',
     received: 'Received',
@@ -25,7 +25,7 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Copy Address To Clipboard'
   },
   SendPage: {
-    title: 'Send ZEN',
+    title: 'Send ZER',
     payTo: 'Pay To',
     amountToPay: 'Amount To Pay',
     balance: 'Balance',
@@ -38,12 +38,12 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Send',
     txSuccessful: 'Transcation successful! Click here to see your transaction.',
-    confirmSend: 'I want to send these ZEN',
+    confirmSend: 'I want to send these ZER',
     invalidAddress: 'Invalid `To Address` Only transparent addresses are supported at this point in time.',
     invalidAmount: 'Invalid `Amount`.',
     invalidFee: 'Invalid `Fees`. Try 0 :)',
     zeroAmount: 'Amount must be greater than 0.',
-    notEnoughZEN: 'Not enough confirmed ZEN in account to perform transaction.',
+    notEnoughZEN: 'Not enough confirmed ZER in account to perform transaction.',
     noCameraPermissions: 'No camera permissions. You can allow camera access in your settings.'
   },
   TxDetailPage: {
@@ -79,8 +79,8 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Change PIN',
-    newPinPageTitle: 'ZEN Wallet Setup',
-    verifyPinPageTitle: 'ZEN Wallet PIN Verification',
+    newPinPageTitle: 'ZER Wallet Setup',
+    verifyPinPageTitle: 'ZER Wallet PIN Verification',
     setupNewPin: 'Set up a new PIN',
     reenterPin: 'Re-enter your PIN',
     pinsNotSimilar: 'PINs entered do not match',

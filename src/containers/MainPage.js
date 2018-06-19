@@ -80,14 +80,14 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
           <ons-row>{tx.fees}</ons-row>
         </ListItem>
         <ListItem tappable>
-          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZEN)</strong></ons-row>
+          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
           {
             tx.vin.map(function (vin, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vin.addr }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vin.value } ZEN)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vin.value } ZER)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -99,14 +99,14 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
           }
         </ListItem>
         <ListItem tappable>
-          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZEN)</strong></ons-row>
+          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
           {
             tx.vout.map(function (vout, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vout.scriptPubKey.addresses[0] }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vout.value } ZEN)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vout.value } ZER)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -183,7 +183,7 @@ class MainPage extends React.Component {
         // Get btc value and get local currency
         // via coinmarketcap
         const curCurrency = this.props.settings.currency
-        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/zencash/?convert=' + curCurrency
+        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/zero/?convert=' + curCurrency
         axios.get(cmcZenInfoURL)
           .then((resp) => {
             try {
@@ -376,7 +376,7 @@ class MainPage extends React.Component {
                       component: SettingsPage
                     }
                   ]}
-                renderHeader={() => <ListHeader>ZEN</ListHeader>}
+                renderHeader={() => <ListHeader>ZER</ListHeader>}
                 renderRow={(i) =>
                   <ListItem
                     onClick={() => this.gotoComponent(i.component)}
@@ -408,7 +408,7 @@ class MainPage extends React.Component {
                     {
                       this.props.context.value === null
                         ? null
-                        : <span style={{fontSize: '16px'}}>ZEN</span>
+                        : <span style={{fontSize: '16px'}}>ZER</span>
                     }
                   </h1>
                 </ons-col>
@@ -515,7 +515,7 @@ class MainPage extends React.Component {
                                 <span style={{color: '#7f8c8d'}}>{ txTime }</span>
                               </ons-col>
                               <ons-col style={{textAlign: 'right', paddingRight: '12px'}}>
-                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZEN
+                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZER
                               </ons-col>
                             </ons-row>
                           </ListItem>

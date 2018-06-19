@@ -529,7 +529,7 @@ class SendPage extends React.Component {
                     <span style={{ fontSize: '12px', color: '#7f8c8d' }}>
                       {balanceLang}:&nbsp;
                       {prettyFormatPrices(this.props.context.value)}&nbsp;
-                    ZEN
+                    ZER
                     </span>
                     <Input
                       onChange={this.handleSendValueChange}
@@ -537,7 +537,7 @@ class SendPage extends React.Component {
                       placeholder={amountLang}
                       style={{ width: '100%' }}
                     /><br />
-                    ZEN
+                    ZER
                   </ons-col>
                   <ons-col width={'10%'}>
                     <br />

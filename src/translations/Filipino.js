@@ -13,7 +13,7 @@ export const FILIPINO_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Palabas'
   },
   MainPage: {
-    title: 'ZEN Wallet',
+    title: 'ZER Wallet',
     value: 'Halaga',
     send: 'Padala',
     received: 'Natanggap',
@@ -25,7 +25,7 @@ export const FILIPINO_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopyahin ang Address sa Clipboard'
   },
   SendPage: {
-    title: 'Magpadala ng ZEN',
+    title: 'Magpadala ng ZER',
     payTo: 'Ipadala sa',
     amountToPay: 'Halaga na Ipadala',
     balance: 'Balanse',
@@ -38,12 +38,12 @@ export const FILIPINO_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Lahat na puwede',
     send: 'Ipadala',
     txSuccessful: 'Tagumpay na Transaksiyon! Click dito para makita ang detalye ng transaksiyon.',
-    confirmSend: 'Gusto ko ipadala ang ZEN na ito.',
+    confirmSend: 'Gusto ko ipadala ang ZER na ito.',
     invalidAddress: 'Hindi tamang `Papadalhang Address` transparent na addresses lang ang supportado sa ngayon.',
     invalidAmount: 'Hindi tamang `Halaga`.',
     invalidFee: 'Hindi tamang `Bayad` o kulang. Subukan 0 :)',
     zeroAmount: 'Mas mataaas sa halagang 0 ang kailangan.',
-    notEnoughZEN: 'Hindi sapat na kumpirmadong ZEN sa account para gawin ang transaksiyon.',
+    notEnoughZEN: 'Hindi sapat na kumpirmadong ZER sa account para gawin ang transaksiyon.',
     noCameraPermissions: 'Walang pahintulot sa camera. Pwede mong pahintulutan ang camera sa iyong settings.'
   },
   TxDetailPage: {
@@ -79,8 +79,8 @@ export const FILIPINO_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Palitan ang PIN',
-    newPinPageTitle: 'ZEN Wallet Setup',
-    verifyPinPageTitle: 'Pagpapatunay ng ZEN Wallet PIN',
+    newPinPageTitle: 'ZER Wallet Setup',
+    verifyPinPageTitle: 'Pagpapatunay ng ZER Wallet PIN',
     setupNewPin: 'Gumawa ng bagong PIN',
     reenterPin: 'Lagay ulit ang PIN',
     pinsNotSimilar: 'Hindi tugma ang PINs na nailagay',

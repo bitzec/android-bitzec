@@ -1,6 +1,6 @@
-# ZENCash Mobile
+# ZERO Mobile
 
-ZENCash mobile app built using Onsen UI, Redux, React and Webpack.
+ZERO mobile app built using Onsen UI, Redux, React and Webpack.
 
 Use node v6.11.X
 
@@ -41,6 +41,9 @@ Icons are a bit of a bitch to setup for iOS. Make sure you've added the ios plat
 ```
 
 # Contributors
+[Cryptoforge](http://github.com/Cryptoforge/)
+
+[lutsifer](http://github.com/lutsifer/)
 
 [kendricktan](http://github.com/kendricktan/)
 
