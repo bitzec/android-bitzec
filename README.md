@@ -1,6 +1,6 @@
-# ZENCash Mobile
+# Zero Mobile
 
-ZENCash mobile app built using Onsen UI, Redux, React and Webpack.
+Zero mobile app built using Onsen UI, Redux, React and Webpack.(forked from Zencash)
 
 Use node v6.11.X
 
