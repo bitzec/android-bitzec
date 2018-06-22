@@ -22,7 +22,7 @@ import {
 import TRANSLATIONS from '../translations'
 
 const getContactDetails = (curLang, navigator, addContact, deleteContact, contactName, contactAddress) => {
-  // Language  
+  // Language
   const nameLang = TRANSLATIONS[curLang].ContactsPage.contactsName
   const addressLang = TRANSLATIONS[curLang].ContactsPage.contactsAddress
 
@@ -42,10 +42,10 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
     <Page
       renderToolbar={() => (
         <Toolbar>
-          <div className='left'>
+          <div className='left' style={{color: '#ffd700'}}>
             <BackButton onClick={() => navigator.popPage()}>Back</BackButton>
           </div>
-          <div className='right'>
+          <div className='right' style={{color: '#ffd700'}}>
             <ToolbarButton onClick={() => {
               deleteContact({name: contactName, address: contactAddress})
               navigator.popPage()
@@ -78,8 +78,8 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
         </Fab>
       )}
     >
-      <List style={{wordBreak: 'break-word'}}>
-        <ListItem>
+      <List style={{wordBreak: 'break-word', background: '#515151', width:'100%', height:'100%'}}>
+        <ListItem style={{color: '#ffd700', background: '#515151'}}>
           <Input
             style={inputStyle}
             value={tmpContactName}
@@ -88,7 +88,7 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
             onChange={(e) => { tmpContactName = e.target.value }}
           />
         </ListItem>
-        <ListItem>
+        <ListItem style={{color: '#ffd700', background: '#515151'}}>
           <Input
             style={inputStyle}
             value={tmpContactAddress}
@@ -105,7 +105,7 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
 }
 
 class ContactsPage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('Contact Page')
   }
 
@@ -118,10 +118,10 @@ class ContactsPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           {contactLang}
         </div>
       </Toolbar>
@@ -150,7 +150,7 @@ class ContactsPage extends React.Component {
           {
             this.props.contacts.length === 0
               ? (
-                <ListHeader>
+                <ListHeader style={{color: '#ffd700', background: '#515151'}}>
                   {noContactsLang}
                 </ListHeader>
               )
@@ -161,7 +161,7 @@ class ContactsPage extends React.Component {
                 return (
                   <ListItem key={idx}
                     onClick={this.gotoComponent.bind(this, getContactDetails(CUR_LANG, this.props.navigator, this.props.addContact, this.props.deleteContact, c.name, c.address))}
-                    tappable>
+                    tappable style={{color: '#ffd700', background: '#515151'}}>
                     {c.name}
                   </ListItem>
                 )

@@ -34,11 +34,13 @@ class AddressInfoPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { addressLang }
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -50,16 +52,16 @@ class AddressInfoPage extends React.Component {
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px', textAlign: 'center'}}>
+        <div style={{padding: '12px 12px 0 12px', textAlign: 'center', background: '#515151', width:'100%', height:'100%'}}>
           <p>
             <QRCode value={ this.props.context.address }/>
           </p>
 
-          <p>
+          <p id="addressp">
             { this.props.context.address }
           </p>
 
-          <Button
+          <Button class="GreenButton"
             onClick={() => {
               cordova.plugins.clipboard.copy(this.props.context.address)
               this.setState({toastShown: true})

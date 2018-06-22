@@ -26,13 +26,15 @@ class ShowPrivateKeyPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>
             Back
           </BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { TRANSLATIONS[CUR_LANG].ShowPrivateKeyPage.title }
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -43,32 +45,30 @@ class ShowPrivateKeyPage extends React.Component {
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <hr/>
         {
           this.props.secrets.items.map(function (i, idx) {
             return (
-              <div key={idx}>
-                <ons-row style={{textAlign: 'center'}}>
-                  <ons-col>
-                    <p>
+              <div  id="privatekeys" key={idx}>
+                <ons-row id="privatekeysrow">
+                  <ons-col id="privatekeyscol">
+                    <p id="privatekeysp">
                       { TRANSLATIONS[CUR_LANG].General.privateKey }<br/>
                       <QRCode value={i.privateKey} />
                     </p>
-                    <p style={{fontSize: '12px'}}>
-                      <textarea disabled value={i.privateKey}></textarea>
+                    <p id="privatekeysp">
+                      <textarea id="privatekeysp" disabled value={i.privateKey}></textarea>
                     </p>
                   </ons-col>
-                  <ons-col>
-                    <p>
+                  <ons-col id="privatekeyscol">
+                    <p id="privatekeysp">
                       { TRANSLATIONS[CUR_LANG].General.address }<br/>
                       <QRCode value={i.address} />
                     </p>
-                    <p style={{fontSize: '12px'}}>
-                      <textarea disabled value={i.address}></textarea>
+                    <p id="privatekeysp">
+                      <textarea id="privatekeysp" disabled value={i.address}></textarea>
                     </p>
                   </ons-col>
                 </ons-row>
-                <hr/>
               </div>
             )
           })

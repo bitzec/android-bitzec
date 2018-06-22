@@ -17,7 +17,7 @@ import {
 import TRANSLATIONS from '../translations'
 
 class SelectLanguagePage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('Language Page')
   }
 
@@ -27,11 +27,13 @@ class SelectLanguagePage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { languageLang } ({ this.props.settings.language })
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -40,25 +42,27 @@ class SelectLanguagePage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <List>
-          {
-            LANGUAGES.sort().map(function (l) {
-              return (
-                <div>
-                  <ListItem
-                    onClick={function () {
-                      this.props.setLanguage(l)
-                      this.props.navigator.popPage()
-                    }.bind(this)}
-                    tappable
-                  >
-                    { l }
-                  </ListItem>
-                </div>
-              )
-            }.bind(this))
-          }
-        </List>
+        <div  style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
+          <List style={{color: '#ffd700', background: '#515151'}}>
+            {
+              LANGUAGES.sort().map(function (l) {
+                return (
+                  <div>
+                    <ListItem id="setlang"
+                      onClick={function () {
+                        this.props.setLanguage(l)
+                        this.props.navigator.popPage()
+                      }.bind(this)}
+                      tappable
+                    >
+                      { l }
+                    </ListItem>
+                  </div>
+                )
+              }.bind(this))
+            }
+          </List>
+        </div>
       </Page>
     )
   }

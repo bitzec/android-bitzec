@@ -26,11 +26,13 @@ class SelectInsightPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           Insight API
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -39,22 +41,30 @@ class SelectInsightPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <List>
-          <ListItem>
-            <Input
-              onChange={(e) => this.props.setInsightAPI(e.target.value)}
-              value={this.props.settings.insightAPI}
-              style={{ width: '100%' }}
-              float={true}
-            />
-          </ListItem>
-          <ListHeader>
-            Preconfigured Nodes
-          </ListHeader>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
-            mining4.co.uk
-          </ListItem>
-        </List>
+        <div style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
+          <List style={{color: '#ffd700', background: '#515151'}}>
+            <ListItem style={{color: '#ffd700', background: '#515151'}}>
+              <Input id="insite"
+                onChange={(e) => this.props.setInsightAPI(e.target.value)}
+                value={this.props.settings.insightAPI}
+                style={{ width: '100%' }}
+                float={true}
+              />
+            </ListItem>
+            <ListHeader style={{color: '#ffd700', background: '#515151'}}>
+              Preconfigured Nodes
+            </ListHeader>
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zseed1.cryptonode.cloud:3000/insight-api-zero/')}>
+              The Zero Team (SSL)
+            </ListItem>
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('http://zseed1.cryptonode.cloud:2999/insight-api-zero/')}>
+              The Zero Team (Non-SSL)
+            </ListItem>
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
+              mining4.co.uk
+            </ListItem>
+          </List>
+        </div>
       </Page>
     )
   }

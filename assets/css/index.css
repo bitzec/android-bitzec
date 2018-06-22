@@ -1,3 +1,123 @@
-.toolbar {
-  background-color: #224972;
+div {
+  box-sizing: border-box;
 }
+
+.RedButton{
+  background-color: #f44336;
+}
+
+.GreenButton{
+  background-color: #4CAF50;
+}
+
+.YellowButton{
+  background-color: #ffd700;
+}
+
+.LightGreyButton{
+  background-color: #B9B9B9;
+  color: #000000;
+}
+
+#settings {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  height: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+#privatekeys {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+#privatekeysrow {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+  text-align: center;
+}
+
+#privatekeyscol {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+}
+
+#privatekeysp {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+  font-size: 12px;
+  border:solid 0px !important;
+}
+#addressp{
+  color: #ffd700 !important;
+}
+
+#sendinput {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+}
+
+#insite {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+}
+
+
+#checkboxes:checked{
+    background-color: #f44336 !important;
+    background: #f44336 !important;
+}
+
+#setlang {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+}
+
+#setcurr {
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+}
+
+#splash{
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#splashicon{
+  color: #ffd700 !important;
+}
+
+#mainsplit{
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+#mainlist{
+  background-color: #515151 !important;
+  background: #515151 !important;
+  color: #ffd700 !important;
+}
+
+#mainicons{
+  color: #000000 !important;
+  background: #ffd700 !important;
+  background-color: #ffd700 !important;
+  }

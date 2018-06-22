@@ -12,7 +12,7 @@ import {
 import TRANSLATIONS from '../translations'
 
 class RecoverWalletPage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('About Page')
   }
 
@@ -21,11 +21,13 @@ class RecoverWalletPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { TRANSLATIONS[CUR_LANG].AboutPage.title }
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -34,15 +36,15 @@ class RecoverWalletPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px', textAlign: 'center'}}>
+        <div style={{padding: '12px 12px 0 12px', textAlign: 'center', color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
           <p>ZER Wallet v{VERSION}</p>
           <br/>
-          <p>Author: Kendrick Tan</p>
-          <p>Made for zensystem.io</p>
+          <p>Author: The Zero Team</p>
+          <p>Made for zerocurrency.io</p>
           <p>Found a bug? File it &nbsp;
             <a
               href='#'
-              onClick={() => window.open('https://github.com/zencashofficial/zencash-mobile/issues', '_system')}
+              onClick={() => window.open('https://github.com/zerocurrencycoin/zero-mobile-wallet/issues', '_system')}
             >here</a>
           </p>
         </div>

@@ -1,5 +1,5 @@
 // Object.assign({}) doesn't work on all versions of android
-// Need to include polyfill 
+// Need to include polyfill
 import 'babel-polyfill'
 
 import {
@@ -12,7 +12,7 @@ import {
 } from '../actions/Settings'
 
 const initialSettings = {
-  insightAPI: 'https://zero-insight.mining4.co.uk/insight-api-zcash/',
+  insightAPI: 'https://zseed1.cryptonode.cloud:3000/insight-api-zero/',
   explorerURL: 'https://zero-insight.mining4.co.uk/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
