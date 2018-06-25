@@ -42,21 +42,23 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
     <Page
       renderToolbar={() => (
         <Toolbar>
-          <div className='left' style={{color: '#ffd700'}}>
+          <div className='left' style={{color: '#ffd700', background: '#000000'}}>
             <BackButton onClick={() => navigator.popPage()}>Back</BackButton>
           </div>
-          <div className='right' style={{color: '#ffd700'}}>
+          <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+          </div>
+          <div className='right' style={{color: '#ffd700', background: '#000000'}}>
             <ToolbarButton onClick={() => {
               deleteContact({name: contactName, address: contactAddress})
               navigator.popPage()
             }}>
-              <Icon icon='ion-trash-a'/>
+              <Icon style={{color: '#ffd700', background: '#000000'}} icon='ion-trash-a'/>
             </ToolbarButton>
           </div>
         </Toolbar>
       )}
       renderFixed={() => (
-        <Fab
+        <Fab id="mainicons"
           position='bottom right'
           onClick={() => {
             deleteContact({
@@ -74,30 +76,32 @@ const getContactDetails = (curLang, navigator, addContact, deleteContact, contac
 
             navigator.popPage()
           }}>
-          <Icon icon='ion-archive'/>
+          <Icon id="mainicons" icon='ion-archive'/>
         </Fab>
       )}
     >
-      <List style={{wordBreak: 'break-word', background: '#515151', width:'100%', height:'100%'}}>
-        <ListItem style={{color: '#ffd700', background: '#515151'}}>
-          <Input
-            style={inputStyle}
-            value={tmpContactName}
-            placeholder={nameLang}
-            float
-            onChange={(e) => { tmpContactName = e.target.value }}
-          />
-        </ListItem>
-        <ListItem style={{color: '#ffd700', background: '#515151'}}>
-          <Input
-            style={inputStyle}
-            value={tmpContactAddress}
-            placeholder={addressLang}
-            float
-            onChange={(e) => { tmpContactAddress = e.target.value }}
-          />
-        </ListItem>
-      </List>
+      <div id="mainlist" style={{width:'100%', height:'100%'}}>
+        <List id="mainlist" style={{wordBreak: 'break-word', width:'100%', height:'100%'}}>
+          <ListItem id="mainlist">
+            <Input id="sendinput"
+              style={inputStyle}
+              value={tmpContactName}
+              placeholder={nameLang}
+              float
+              onChange={(e) => { tmpContactName = e.target.value }}
+            />
+          </ListItem>
+          <ListItem id="mainlist">
+            <Input id="sendinput"
+              style={inputStyle}
+              value={tmpContactAddress}
+              placeholder={addressLang}
+              float
+              onChange={(e) => { tmpContactAddress = e.target.value }}
+            />
+          </ListItem>
+        </List>
+      </div>
     </Page>
   )
 
@@ -124,16 +128,18 @@ class ContactsPage extends React.Component {
         <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           {contactLang}
         </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+        </div>
       </Toolbar>
     )
   }
 
   renderFab () {
     return (
-      <Fab
+      <Fab id="mainicons"
         position='bottom right'
         onClick={() => this.gotoComponent(getContactDetails(this.props.settings.language, this.props.navigator, this.props.addContact, this.props.deleteContact, '', ''))}>
-        <Icon icon='ion-plus'/>
+        <Icon id="mainicons" icon='ion-plus'/>
       </Fab>
     )
   }
@@ -146,28 +152,30 @@ class ContactsPage extends React.Component {
       <Page
         renderToolbar={this.renderToolbar.bind(this)}
         renderFixed={this.renderFab.bind(this)}>
-        <List>
-          {
-            this.props.contacts.length === 0
-              ? (
-                <ListHeader style={{color: '#ffd700', background: '#515151'}}>
-                  {noContactsLang}
-                </ListHeader>
-              )
-              // Sort alphabetically and map
-              : this.props.contacts.sort((a, b) => {
-                return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
-              }).map((c, idx) => {
-                return (
-                  <ListItem key={idx}
-                    onClick={this.gotoComponent.bind(this, getContactDetails(CUR_LANG, this.props.navigator, this.props.addContact, this.props.deleteContact, c.name, c.address))}
-                    tappable style={{color: '#ffd700', background: '#515151'}}>
-                    {c.name}
-                  </ListItem>
+        <div id="mainlist" style={{width:'100%', height:'100%'}}>
+          <List id="mainlist">
+            {
+              this.props.contacts.length === 0
+                ? (
+                  <ListHeader id="mainlist">
+                    {noContactsLang}
+                  </ListHeader>
                 )
-              })
-          }
-        </List>
+                // Sort alphabetically and map
+                : this.props.contacts.sort((a, b) => {
+                  return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
+                }).map((c, idx) => {
+                  return (
+                    <ListItem id="mainlist" key={idx}
+                      onClick={this.gotoComponent.bind(this, getContactDetails(CUR_LANG, this.props.navigator, this.props.addContact, this.props.deleteContact, c.name, c.address))}
+                      tappable>
+                      {c.name}
+                    </ListItem>
+                  )
+                })
+            }
+          </List>
+        </div>
       </Page>
     )
   }

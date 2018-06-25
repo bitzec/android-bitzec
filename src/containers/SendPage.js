@@ -35,15 +35,19 @@ const getContactsList = (navigator, contacts, selectContact) => {
           <div className='left' style={{color: '#ffd700', background: '#000000'}}>
             <BackButton onClick={() => navigator.popPage()}>Back</BackButton>
           </div>
+          <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+          </div>
+          <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+          </div>
         </Toolbar>
       )}
     >
-    <div style={{background: '#515151', width:'100%', height:'100%'}}>
+    <div id="mainlist" style={{width:'100%', height:'100%'}}>
         <List style={{wordBreak: 'break-word'}}>
           {
             contacts.length === 0
               ? (
-                <ListHeader>
+                <ListHeader id="mainlist">
                     No contacts found
                 </ListHeader>
               )
@@ -52,7 +56,7 @@ const getContactsList = (navigator, contacts, selectContact) => {
                 return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
               }).map((c, idx) => {
                 return (
-                  <ListItem key={idx}
+                  <ListItem id="mainlist" key={idx}
                     onClick={() => {
                       selectContact(c.address)
                       navigator.popPage()
