@@ -81,11 +81,11 @@ export const CHINESE_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: '更改 PIN',
     newPinPageTitle: 'ZER 钱包安装',
     verifyPinPageTitle: 'ZER 钱包 PIN 证实',
-    setupNewPin: '设置新 PIN',
+    setupNewPin: '设置新的4位数 PIN',
     reenterPin: '再次输入 PIN',
     pinsNotSimilar: '输入的 PIN 不一样',
     invalidPin: '无效的 PIN',
-    enterYourPin: '输入你的 PIN'
+    enterYourPin: '輸入您的4位数 PIN'
   },
   ContactsPage: {
     contacts: '联系笔记本',

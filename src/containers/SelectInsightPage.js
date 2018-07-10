@@ -43,22 +43,24 @@ class SelectInsightPage extends React.Component {
       <Page renderToolbar={this.renderToolbar.bind(this)}>
         <div style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
           <List style={{color: '#ffd700', background: '#515151'}}>
+          <ListItem style={{color: '#ffd700', background: '#515151', height: '10px'}} >
+          </ListItem>
+          <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
+            Manual Configuration
+          </ListHeader>
             <ListItem style={{color: '#ffd700', background: '#515151'}}>
               <Input id="insite"
                 onChange={(e) => this.props.setInsightAPI(e.target.value)}
                 value={this.props.settings.insightAPI}
-                style={{ width: '100%' }}
+                style={{ width: '100%', padding: '0px 5px 0 5px'}}
                 float={true}
               />
             </ListItem>
-            <ListHeader style={{color: '#ffd700', background: '#515151'}}>
+            <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
               Preconfigured Nodes
             </ListHeader>
-            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zseed1.cryptonode.cloud:3000/insight-api-zero/')}>
-              The Zero Team (SSL)
-            </ListItem>
-            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('http://zseed1.cryptonode.cloud:2999/insight-api-zero/')}>
-              The Zero Team (Non-SSL)
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zeroapi.cryptonode.cloud/')}>
+              Team Zero Offical API
             </ListItem>
             <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
               mining4.co.uk

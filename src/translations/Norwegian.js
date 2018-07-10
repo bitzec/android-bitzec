@@ -80,11 +80,11 @@ export const NORWEGIAN_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Endre PIN',
     newPinPageTitle: 'ZER Lommebok Oppsett',
     verifyPinPageTitle: 'ZER Lommebok PIN Bekreftelse',
-    setupNewPin: 'Skriv inn ny PIN',
+    setupNewPin: 'Skriv inn ny 4-sifrede PIN',
     reenterPin: 'Gjenta ny PIN',
     pinsNotSimilar: 'PINs stemmer ikke',
     invalidPin: 'Ugyldig PIN',
-    enterYourPin: 'Skriv inn din PIN'
+    enterYourPin: 'Skriv inn din 4-sifrede PIN'
   },
   ContactsPage: {
     contacts: 'Kontakter',

@@ -299,10 +299,10 @@ class MainPage extends React.Component {
         </Fab>
 
         <SpeedDialItem id="mainicons" onClick={() => this.gotoComponent(SendPage)}>
-          <Icon id="mainicons" icon='ion-paper-airplane' />
+          <Icon id="planeicon" icon='ion-paper-airplane' />
         </SpeedDialItem>
         <SpeedDialItem id="mainicons" onClick={() => this.gotoComponent(AddressInfoPage)}>
-          <Icon id="mainicons" icon='ion-qr-scanner' />
+          <Icon id="qricon" icon='ion-qr-scanner' />
         </SpeedDialItem>
       </SpeedDial>
     )
@@ -347,6 +347,7 @@ class MainPage extends React.Component {
     const loadingLang = TRANSLATIONS[CUR_LANG].General.loading
     const noConnectionLang = TRANSLATIONS[CUR_LANG].MainPage.noConnection
     const contactsLang = TRANSLATIONS[CUR_LANG].ContactsPage.contacts
+    const titleLang = TRANSLATIONS[CUR_LANG].MainPage.title
 
     // For qr scanning
     const pageOpacity = this.props.context.qrScanning ? '0.0' : '1.0'
@@ -382,7 +383,7 @@ class MainPage extends React.Component {
                           component: SettingsPage
                         }
                       ]}
-                    renderHeader={() => <ListHeader id="mainlist" >ZER</ListHeader>}
+                    renderHeader={() => <ListHeader id="settingHeader">{titleLang}</ListHeader>}
                     renderRow={(i) =>
                       <ListItem id="mainlist"
                         onClick={() => this.gotoComponent(i.component)}
@@ -403,8 +404,21 @@ class MainPage extends React.Component {
                 renderFixed={(e) => this.renderFixed()}>
                 <div id="mainsplit">
                   <ons-row id="mainlist" style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
-                    <ons-col id="mainlist" width={'47%'}>
+                    <ons-col id="mainlist" width={'100%'}>
                       <h1 id="mainlist" style={{marginLeft: '12px'}}>
+                        {addressLang}<br/>
+                        <span id="mainlist" style={{marginLeft: '0px', fontSize: '50%'}}>
+                          {this.props.context.address}
+                        </span>
+                      </h1>
+                    </ons-col>
+                  </ons-row>
+                  <ons-row id="mainlist" style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
+                    <ons-col id="mainlist" width={'13%'}>
+                    </ons-col>
+                    <ons-col id="mainlist" width={'29%'}>
+                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                        ZER<br/>
                         {
                           this.props.context.value === null
                             ? (
@@ -412,43 +426,34 @@ class MainPage extends React.Component {
                                 ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
                                 : loadingLang
                             ) : prettyFormatPrices(this.props.context.value)
-                        }&nbsp;
-                        {
-                          this.props.context.value === null
-                            ? null
-                            : <span  id="mainlist" style={{fontSize: '16px'}}>ZER</span>
                         }
-                      </h1>
+                      </h5>
                     </ons-col>
-                    <ons-col id="mainlist">
-                      <ons-row id="mainlist">
-                        <ons-col id="mainlist">
-                          <h5 id="mainlist" style={{marginLeft: '12px'}}>
-                            BTC<br/>
-                            {
-                              this.props.context.BTCValue === null && this.props.context.value === null
-                                ? (
-                                  this.state.connectionError
-                                    ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
-                                    : loadingLang
-                                ) : prettyFormatPrices(this.props.context.value * this.props.context.BTCValue)
-                            }
-                          </h5>
-                        </ons-col>
-                        <ons-col id="mainlist">
-                          <h5 id="mainlist" style={{marginLeft: '12px'}}>
-                            { this.props.settings.currency }<br/>
-                            {
-                              this.props.context.currencyValue === null && this.props.context.value === null
-                                ? (
-                                  this.state.connectionError
-                                    ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
-                                    : loadingLang
-                                ) : prettyFormatPrices(this.props.context.value * this.props.context.currencyValue, 2)
-                            }
-                          </h5>
-                        </ons-col>
-                      </ons-row>
+                    <ons-col id="mainlist" width={'29%'}>
+                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                        BTC<br/>
+                        {
+                          this.props.context.BTCValue === null && this.props.context.value === null
+                            ? (
+                              this.state.connectionError
+                                ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
+                                : loadingLang
+                            ) : prettyFormatPrices(this.props.context.value * this.props.context.BTCValue)
+                        }
+                      </h5>
+                    </ons-col>
+                    <ons-col id="mainlist" width={'29%'}>
+                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                        { this.props.settings.currency }<br/>
+                        {
+                          this.props.context.currencyValue === null && this.props.context.value === null
+                            ? (
+                              this.state.connectionError
+                                ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
+                                : loadingLang
+                            ) : prettyFormatPrices(this.props.context.value * this.props.context.currencyValue, 2)
+                        }
+                      </h5>
                     </ons-col>
                   </ons-row>
 

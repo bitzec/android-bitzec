@@ -82,10 +82,10 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     newPinPageTitle: 'ZER Wallet määrittäminen',
     verifyPinPageTitle: 'ZER Wallet PIN-kysely',
     setupNewPin: 'Anna uusi PIN',
-    reenterPin: 'Vahvista uusi PIN',
+    reenterPin: 'Vahvista uusi 4-numeroinen PIN',
     pinsNotSimilar: 'Annetut PIN-luvut eivät täsmää',
     invalidPin: 'Virheellinen PIN',
-    enterYourPin: 'Anna PIN'
+    enterYourPin: 'Anna 4-numeroinen PIN'
   },
   ContactsPage: {
     contacts: 'Yhteystiedot',

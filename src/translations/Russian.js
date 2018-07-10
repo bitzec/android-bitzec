@@ -81,11 +81,11 @@ export const RUSSIAN_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Изменить PIN',
     newPinPageTitle: 'Настройка ZER кошелька',
     verifyPinPageTitle: 'ZER кошелек подтверждение PIN',
-    setupNewPin: 'Введите новый PIN',
+    setupNewPin: 'Введите новый 4-значный PIN',
     reenterPin: 'Повторите ваш PIN',
     pinsNotSimilar: 'Введеные PIN-ы не совпадают',
     invalidPin: 'Неверный PIN',
-    enterYourPin: 'Введите PIN'
+    enterYourPin: 'Введите свой 4-значный PIN-код'
   },
   ContactsPage: {
     contacts: 'Контакты',

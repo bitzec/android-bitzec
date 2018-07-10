@@ -39,7 +39,7 @@ class RecoverWalletPage extends React.Component {
         <div style={{padding: '12px 12px 0 12px', textAlign: 'center', color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
           <p>ZER Wallet v{VERSION}</p>
           <br/>
-          <p>Author: The Zero Team</p>
+          <p>Author: Team Zero</p>
           <p>Made for zerocurrency.io</p>
           <p>Found a bug? File it &nbsp;
             <a

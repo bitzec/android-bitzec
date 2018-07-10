@@ -116,8 +116,41 @@ div {
   color: #ffd700 !important;
 }
 
+#settingHeader{
+  background-color: #000000!important;
+  background: #000000 !important;
+  color: #ffd700 !important;
+  font-size: 130% !important;
+}
+
 #mainicons{
   color: #000000 !important;
   background: #ffd700 !important;
   background-color: #ffd700 !important;
   }
+
+#qricon{
+    color: #000000 !important;
+    background: #ffd700 !important;
+    background-color: #ffd700 !important;
+    height: 55% !important;
+    vertical-align: middle !important;
+  }
+
+#planeicon{
+    color: #000000 !important;
+    background: #ffd700 !important;
+    background-color: #ffd700 !important;
+    height: 55% !important;
+    vertical-align: middle !important;
+    padding-right: 5%
+  }
+
+a:link {
+    color: #e69500 !important;
+}
+
+/* visited link */
+a:visited {
+    color: red !important;
+}

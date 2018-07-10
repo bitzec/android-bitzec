@@ -81,11 +81,11 @@ export const SERBIAN_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Promeni PIN',
     newPinPageTitle: 'Podešavanje ZER Novčanika',
     verifyPinPageTitle: 'ZER Novčanik PIN Verifikacija',
-    setupNewPin: 'Postavite novi PIN',
+    setupNewPin: 'Postavite novi 4-cifreni PIN',
     reenterPin: 'Ponovo unesite PIN',
     pinsNotSimilar: 'Uneti PINovi se ne slažu',
     invalidPin: 'Nevažeći PIN',
-    enterYourPin: 'Unesite vaš PIN'
+    enterYourPin: 'Unesite vaš 4-cifreni PIN'
   },
   ContactsPage: {
     contacts: 'Contacts',

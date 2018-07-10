@@ -81,11 +81,11 @@ export const FILIPINO_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Palitan ang PIN',
     newPinPageTitle: 'ZER Wallet Setup',
     verifyPinPageTitle: 'Pagpapatunay ng ZER Wallet PIN',
-    setupNewPin: 'Gumawa ng bagong PIN',
+    setupNewPin: 'Gumawa ng bagong 4-digit na PIN',
     reenterPin: 'Lagay ulit ang PIN',
     pinsNotSimilar: 'Hindi tugma ang PINs na nailagay',
     invalidPin: 'Hindi tamang PIN',
-    enterYourPin: 'Lagay ang iyong PIN'
+    enterYourPin: 'Lagay ang iyong 4-digit PIN'
   },
   ContactsPage: {
     contacts: 'Contacts',

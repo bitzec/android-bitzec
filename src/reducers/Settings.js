@@ -12,8 +12,8 @@ import {
 } from '../actions/Settings'
 
 const initialSettings = {
-  insightAPI: 'https://zseed1.cryptonode.cloud:3000/insight-api-zero/',
-  explorerURL: 'https://zero-insight.mining4.co.uk/',
+  insightAPI: 'https://zeroapi.cryptonode.cloud/',
+  explorerURL: 'https://zero.cryptonode.cloud/insight/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
   pin: null

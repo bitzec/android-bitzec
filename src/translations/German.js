@@ -81,11 +81,11 @@ export const GERMAN_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'PIN ändern',
     newPinPageTitle: 'ZER Brieftasche einrichten',
     verifyPinPageTitle: 'ZER Wallet PIN Verifizierung',
-    setupNewPin: 'Neue PIN festlegen',
+    setupNewPin: 'Neue 4-stellige PIN festlegen',
     reenterPin: 'PIN erneut eingeben',
     pinsNotSimilar: 'PINs stimmen nicht überein',
     invalidPin: 'Ungültige PIN',
-    enterYourPin: 'PIN Eingeben'
+    enterYourPin: 'Geben Sie Ihre 4-stellige PIN ein'
   },
   ContactsPage: {
     contacts: 'Kontakte',

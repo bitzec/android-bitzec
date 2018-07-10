@@ -81,11 +81,11 @@ export const AFRIKAANS_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Verander PIN',
     newPinPageTitle: 'Opstel van ZER Beursie',
     verifyPinPageTitle: 'ZER Beursie PIN Verifikasie',
-    setupNewPin: 'Stel nuwe PIN op',
+    setupNewPin: 'Stel nuwe 4-syfer-PIN op',
     reenterPin: 'Voer jou PIN weer in',
     pinsNotSimilar: 'PINs wat ingevoer word, stem nie ooreen nie',
     invalidPin: 'Ongeldige PIN',
-    enterYourPin: 'Voer U PIN in'
+    enterYourPin: 'Voer jou 4-syfer-PIN in'
   },
   ContactsPage: {
     contacts: 'Kontakte',

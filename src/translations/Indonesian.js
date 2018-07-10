@@ -81,11 +81,11 @@ export const INDONESIAN_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Ubah PIN',
     newPinPageTitle: 'Penyiapan Dompet ZER',
     verifyPinPageTitle: 'Verifikasi Pin Dompet ZER',
-    setupNewPin: 'Pasang Pin bar',
+    setupNewPin: 'Setel PIN 4 digit baru',
     reenterPin: 'Masukkan kembali PIN Anda',
     pinsNotSimilar: 'PIN yang dimasukkan tidak cocok',
     invalidPin: 'PIN tidak valid',
-    enterYourPin: 'Masukkan PIN Anda'
+    enterYourPin: 'Masukkan PIN 4-digit Anda'
   },
   ContactsPage: {
     contacts: 'Kontak',

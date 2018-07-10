@@ -81,11 +81,11 @@ export const FRENCH_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Changer le code PIN',
     newPinPageTitle: 'Configuration du Porte-Monnaie ZER',
     verifyPinPageTitle: 'Vérification du code PIN du Porte-Monnaie ZER',
-    setupNewPin: 'Configurer un nouveau code PIN',
+    setupNewPin: 'Configurer un nouveau code PIN à 4 chiffres',
     reenterPin: 'Répéter votre code PIN',
     pinsNotSimilar: 'Les codes PIN entrés ne correspondent pas',
     invalidPin: 'Code PIN invalide',
-    enterYourPin: 'Entrez votre code PIN'
+    enterYourPin: 'Entrez votre code PIN à 4 chiffres'
   },
   ContactsPage: {
     contacts: 'Contacts',

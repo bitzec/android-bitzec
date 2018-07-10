@@ -81,11 +81,11 @@ export const DUTCH_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Verander PIN',
     newPinPageTitle: 'ZER Portefuille Installatiewizard',
     verifyPinPageTitle: 'ZER Portefuille PIN Verificatie',
-    setupNewPin: 'Stel een nieuwe PIN in',
+    setupNewPin: 'Stel een nieuwe 4-cijferige PIN in',
     reenterPin: 'Voer jouw PIN nogmaals in',
     pinsNotSimilar: 'Ingevoerde PIN komt niet overeen',
     invalidPin: 'Ongeldige PIN',
-    enterYourPin: 'Voer Uw PIN in'
+    enterYourPin: 'Voer uw 4-cijferige PIN in'
   },
   ContactsPage: {
     contacts: 'Contacten',

@@ -81,11 +81,11 @@ export const PORTUGUESE_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Alterar PIN',
     newPinPageTitle: 'Configuração da carteira de ZER',
     verifyPinPageTitle: 'Verificação do Pin da Carteira ZER',
-    setupNewPin: 'Configure um novo PIN',
+    setupNewPin: 'Configure um novo PIN de 4 dígitos',
     reenterPin: 'Confirme seu PIN',
     pinsNotSimilar: 'PINs digitados não conferem',
     invalidPin: 'PIN Inválido',
-    enterYourPin: 'Digite seu PIN'
+    enterYourPin: 'Digite seu PIN de 4 dígitos'
   },
   ContactsPage: {
     contacts: 'Contacts',

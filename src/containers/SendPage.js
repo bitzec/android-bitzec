@@ -513,8 +513,7 @@ class SendPage extends React.Component {
                   <Input id="sendinput"
                     onChange={(e) => this.setState({ addressReceive: e.target.value })}
                     value={this.state.addressReceive}
-                    placeholder={addressLang}
-                    style={{ width: '100%'}}
+                    style={{ width: '100%', padding: '0px 5px 0 5px'}}
                     float={true}
                   />
                 </div>
@@ -541,7 +540,7 @@ class SendPage extends React.Component {
                       onChange={this.handleSendValueChange}
                       value={this.state.sendValue}
                       placeholder={amountLang}
-                      style={{ width: '100%' }}
+                      style={{ width: '100%', padding: '0px 5px 0 5px'}}
                     /><br />
                     ZER
                   </ons-col>
@@ -560,7 +559,7 @@ class SendPage extends React.Component {
                       onChange={this.handleSendCurrencyValueChange}
                       value={this.state.sendCurrencyValue}
                       placeholder={amountLang}
-                      style={{ width: '100%'}}
+                      style={{ width: '100%', padding: '0px 5px 0 5px'}}
                     /><br />
                     {this.props.settings.currency}
                   </ons-col>

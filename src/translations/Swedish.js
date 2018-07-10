@@ -81,11 +81,11 @@ export const SWEDISH_TRANSLATION: TRANSLATION_OBJ = {
     changePinTitle: 'Ändra PIN',
     newPinPageTitle: 'ZER Wallet Inställningar',
     verifyPinPageTitle: 'ZER Wallet PIN Bekräftelse',
-    setupNewPin: 'Skapa en ny PIN',
+    setupNewPin: 'Skapa en ny 4-siffrig PIN',
     reenterPin: 'Skriv in din PIN igen',
     pinsNotSimilar: 'Dina inskrivna PIN matchar inte',
     invalidPin: 'Ogiltig PIN',
-    enterYourPin: 'Skriv in din PIN'
+    enterYourPin: 'Ange din 4-siffrig PIN'
   },
   ContactsPage: {
     contacts: 'Kontakter',
