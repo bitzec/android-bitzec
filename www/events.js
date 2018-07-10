@@ -18,7 +18,7 @@ function onPause() {
 
 function onResume() {
     doResume = new Date();
-    if (((doResume - doPause) / 1000)>30) {
+    if (((doResume - doPause) / 1000)>60) {
         location.reload();
     }
 }
