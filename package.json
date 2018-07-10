@@ -1,6 +1,6 @@
 {
   "name": "zero-mobile",
-  "version": "0.0.13",
+  "version": "0.0.1",
   "description": "Mobile Wallet for ZERO",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/Cryptoforge/zero-mobile.git"
   },
-  "author": "Kendrick Tan <kendricktan0814@gmail.com>",
+  "author": "CryptoForge <cryptoforge.cc@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Cryptoforge/zero-mobile/issues"
