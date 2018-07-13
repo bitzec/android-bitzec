@@ -18,7 +18,7 @@ cordova plugin add cordova-plugin-google-analytics
 ```
 
 ## Android
-Requires Android SKD (Recommend Full IDE) and Oracle Java to be installed
+Requires Android SDK (Recommend Full Studio) and Oracle Java to be installed
 ```
 cordova platform add android@6.2.3
 cordova run android
