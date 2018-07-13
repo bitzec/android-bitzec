@@ -71,8 +71,12 @@ class SetupPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='center'>
-          ZEN Wallet Setup
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        </div>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+          ZER Wallet Setup
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -81,7 +85,7 @@ class SetupPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px'}}>
+        <div style={{padding: '12px 12px 0 12px', color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
           <p>
             <textarea
               style={{width: '100%'}}
@@ -91,7 +95,7 @@ class SetupPage extends React.Component {
             </textarea>
           </p>
 
-          <Button
+          <Button class='RedButton'
             onClick={() => this.handleLoadWallet(this.state.tempSecretPhrase)}
             disabled={this.state.tempSecretPhrase.length < 16}
             style={{width: '100%'}}
@@ -100,7 +104,7 @@ class SetupPage extends React.Component {
 
           <div style={{paddingTop: '20px', paddingBottom: '20px', textAlign: 'center'}}>OR</div>
 
-          <Button
+          <Button class='GreenButton'
             onClick={() => this.handleNewWallet()}
             style={{width: '100%'}}
           >New Wallet

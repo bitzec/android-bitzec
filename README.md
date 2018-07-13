@@ -1,6 +1,7 @@
-# Zero Mobile
+# ZERO Mobile
 
-Zero mobile app built using Onsen UI, Redux, React and Webpack.(forked from Zencash)
+ZERO mobile app built using Onsen UI, Redux, React and Webpack.
+
 
 Use node v6.11.X
 
@@ -8,13 +9,27 @@ Use node v6.11.X
 
 ```
 npm install -g yarn cordova
+git clone https://github.com/cryptoforge/zero-mobile.github
+cd zero-Mobile
+git checkout master
 yarn install
 cordova plugin add cordova-plugin-qrscanner cordova-plugin-file cordova-plugin-http cordova-clipboard cordova-plugin-inappbrowser cordova-plugin-device cordova-plugin-wkwebview-engine cordova-plugin-whitelist
 cordova plugin add cordova-plugin-google-analytics
-cordova platform add [android@6.2.3 | ios]
-cordova run [android | ios]
 ```
 
+## Android
+Requires Android SKD (Recommend Full IDE) and Oracle Java to be installed
+```
+cordova platform add android@6.2.3
+cordova run android
+```
+
+## iOS
+Requies XCode to be installed
+```
+cordova platform add ios
+cordova run ios
+```
 ### iOS FAQ
 
 1. Icons
@@ -41,6 +56,9 @@ Icons are a bit of a bitch to setup for iOS. Make sure you've added the ios plat
 ```
 
 # Contributors
+[Cryptoforge](http://github.com/Cryptoforge/)
+
+[lutsifer](http://github.com/lutsifer/)
 
 [kendricktan](http://github.com/kendricktan/)
 

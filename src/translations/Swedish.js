@@ -13,7 +13,7 @@ export const SWEDISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Ut'
   },
   MainPage: {
-    title: 'ZEN Wallet',
+    title: 'ZER Wallet',
     value: 'Värde',
     send: 'Skicka',
     received: 'Mottaget',
@@ -25,7 +25,7 @@ export const SWEDISH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopiera adressen till urklipp'
   },
   SendPage: {
-    title: 'Skicka ZEN',
+    title: 'Skicka ZER',
     payTo: 'Betala till',
     amountToPay: 'Summa att betala',
     balance: 'Saldo',
@@ -38,12 +38,12 @@ export const SWEDISH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Skicka',
     txSuccessful: 'Transaktionen lyckades! Tryck här för att se din transaktion.',
-    confirmSend: 'Jag vill skicka dessa ZEN',
+    confirmSend: 'Jag vill skicka dessa ZER',
     invalidAddress: 'Ogiltig `Till adress` Endast transparenta adresser stöds för tillfället.',
     invalidAmount: 'Ogiltig `Summa`.',
     invalidFee: 'Ogiltig `Avgifter`. Testa 0 :)',
     zeroAmount: 'Summa måste vara mer än 0.',
-    notEnoughZEN: 'Det finns inte tillräckligt med ZEN i kontot för att genomföra transaktionen.',
+    notEnoughZEN: 'Det finns inte tillräckligt med ZER i kontot för att genomföra transaktionen.',
     noCameraPermissions: 'Inget kameratillstånd. Du kan tillåta kameran i dina inställningar.'
   },
   TxDetailPage: {
@@ -79,13 +79,13 @@ export const SWEDISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Ändra PIN',
-    newPinPageTitle: 'ZEN Wallet Inställningar',
-    verifyPinPageTitle: 'ZEN Wallet PIN Bekräftelse',
-    setupNewPin: 'Skapa en ny PIN',
+    newPinPageTitle: 'ZER Wallet Inställningar',
+    verifyPinPageTitle: 'ZER Wallet PIN Bekräftelse',
+    setupNewPin: 'Skapa en ny 4-siffrig PIN',
     reenterPin: 'Skriv in din PIN igen',
     pinsNotSimilar: 'Dina inskrivna PIN matchar inte',
     invalidPin: 'Ogiltig PIN',
-    enterYourPin: 'Skriv in din PIN'
+    enterYourPin: 'Ange din 4-siffrig PIN'
   },
   ContactsPage: {
     contacts: 'Kontakter',

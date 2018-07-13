@@ -19,18 +19,20 @@ import {
 import TRANSLATIONS from '../translations'
 
 class SelectInsightPage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('Insight Page')
   }
 
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           Insight API
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -39,31 +41,32 @@ class SelectInsightPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <List>
-          <ListItem>
-            <Input
-              onChange={(e) => this.props.setInsightAPI(e.target.value)}
-              value={this.props.settings.insightAPI}
-              style={{ width: '100%' }}
-              float={true}
-            />
+        <div style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
+          <List style={{color: '#ffd700', background: '#515151'}}>
+          <ListItem style={{color: '#ffd700', background: '#515151', height: '10px'}} >
           </ListItem>
-          <ListHeader>
-            Preconfigured Nodes
+          <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
+            Manual Configuration
           </ListHeader>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer.zensystem.io/insight-api-zen/')}>
-            zensystem.io
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer2.zensystem.io/insight-api-zen/')}>
-            zensystem2.io
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('http://explorer.zenmine.pro/insight-api-zen/')}>
-            zenmine.pro
-          </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://explorer.zen-solutions.io/api/')}>
-            explorer.zen-solutions.io
-          </ListItem>
-        </List>
+            <ListItem style={{color: '#ffd700', background: '#515151'}}>
+              <Input id="insite"
+                onChange={(e) => this.props.setInsightAPI(e.target.value)}
+                value={this.props.settings.insightAPI}
+                style={{ width: '100%', padding: '0px 5px 0 5px'}}
+                float={true}
+              />
+            </ListItem>
+            <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
+              Preconfigured Nodes
+            </ListHeader>
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zeroapi.cryptonode.cloud/')}>
+              Team Zero Offical API
+            </ListItem>
+            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
+              mining4.co.uk
+            </ListItem>
+          </List>
+        </div>
       </Page>
     )
   }

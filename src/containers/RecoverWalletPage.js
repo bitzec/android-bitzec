@@ -63,11 +63,13 @@ class RecoverWalletPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { TRANSLATIONS[CUR_LANG].RecoverExistingWalletPage.title }
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -83,7 +85,7 @@ class RecoverWalletPage extends React.Component {
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px'}}>
+        <div style={{padding: '12px 12px 0 12px', color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
           <p>
             {secretPhraseLang}:<br/><br/>
             <textarea
@@ -96,7 +98,7 @@ class RecoverWalletPage extends React.Component {
 
           <p>
             <label className="left">
-              <Checkbox
+              <Checkbox id="checkboxes"
                 onChange={(e) => {
                   this.setState({
                     confirmRecover: !this.state.confirmRecover
@@ -114,7 +116,7 @@ class RecoverWalletPage extends React.Component {
             this.state.recovering
               ? <Icon icon='spinner' spin/>
               : (
-                <Button
+                <Button id="RedButton"
                   onClick={() => this.newSecrets()}
                   disabled={!this.state.confirmRecover || this.state.tempSecretPhrase.length < 16}
                   style={{width: '100%', textAlign: 'center'}}

@@ -48,8 +48,12 @@ class VerifyPinPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='center'>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+        </div>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { TRANSLATIONS[this.props.settings.language].PinPage.verifyPinPageTitle }
+        </div>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -63,17 +67,17 @@ class VerifyPinPage extends React.Component {
       padding: '15px',
       fontSize: '17px',
       shadowBlur: '5px',
-      border: '2px solid #34495e'
+      border: '2px solid #ffd700'
     }
     const enterYourPinLang = TRANSLATIONS[CUR_LANG].PinPage.enterYourPin
     const invalidPinLang = TRANSLATIONS[CUR_LANG].PinPage.invalidPin
 
     return (
       <Page renderToolbar={this.props.renderToolbar || this.renderToolbar}>
-        <div style={{padding: '25px 12px 0 12px', textAlign: 'center'}}>
+        <div style={{padding: '25px 12px 0 12px', textAlign: 'center', width:'100%', height:'100%', color: '#ffd700', background: '#515151'}}>
           <img src={ZENCASH_IMG} width='100'/>
           <h2>{ enterYourPinLang }</h2>
-          { this.state.invalidPin ? <h4 style={{color: '#e74c3c'}}>{ invalidPinLang }</h4> : null }
+          { this.state.invalidPin ? <h4 style={{color: '#FF0000'}}>{ invalidPinLang }</h4> : null }
           <hr width='50%'/>
           { device.platform === 'iOS'
             ? <input

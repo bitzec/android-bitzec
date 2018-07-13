@@ -69,8 +69,12 @@ class NewPinPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='center'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        </div>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { TRANSLATIONS[this.props.settings.language].PinPage.newPinPageTitle }
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -84,7 +88,7 @@ class NewPinPage extends React.Component {
       padding: '15px',
       fontSize: '17px',
       shadowBlur: '5px',
-      border: '2px solid #34495e'
+      border: '2px solid #ffd700'
     }
     const setupNewPinLang = TRANSLATIONS[CUR_LANG].PinPage.setupNewPin
     const reenterPinLang = TRANSLATIONS[CUR_LANG].PinPage.reenterPin
@@ -92,10 +96,10 @@ class NewPinPage extends React.Component {
 
     return (
       <Page renderToolbar={this.props.renderToolbar || this.renderToolbar.bind(this)}>
-        <div style={{padding: '25px 12px 0 12px', textAlign: 'center'}}>
+        <div style={{padding: '25px 12px 0 12px', textAlign: 'center', width:'100%', height:'100%',color: '#ffd700', background: '#515151'}}>
           <img src={ZENCASH_IMG} width='100'/>
           <h2>{ this.state.firstEntry ? setupNewPinLang : reenterPinLang }</h2>
-          { this.state.similarPin ? '' : <h4 style={{color: '#e74c3c'}}>{ pinsNotSimilarLang }</h4> }
+          { this.state.similarPin ? '' : <h4 style={{color: '#FF0000'}}>{ pinsNotSimilarLang }</h4> }
           <hr width='50%'/>
           { device.platform === 'iOS'
             ? <input

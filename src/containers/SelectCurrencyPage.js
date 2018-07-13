@@ -17,7 +17,7 @@ import {
 import TRANSLATIONS from '../translations'
 
 class SelectCurrencyPage extends React.Component {
-  componentDidMount() {    
+  componentDidMount() {
     window.ga.trackView('Currency Page')
   }
 
@@ -27,11 +27,13 @@ class SelectCurrencyPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left'>
+        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center'>
+        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
           { currencyLang } ({ this.props.settings.currency })
+        </div>
+        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -40,25 +42,27 @@ class SelectCurrencyPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <List>
-          {
-            CURRENCIES.map(function (l) {
-              return (
-                <div>
-                  <ListItem
-                    onClick={function () {
-                      this.props.setCurrency(l)
-                      this.props.navigator.popPage()
-                    }.bind(this)}
-                    tappable
-                  >
-                    { l }
-                  </ListItem>
-                </div>
-              )
-            }.bind(this))
-          }
-        </List>
+        <div style={{background: '#515151', width:'100%', height:'100%'}}>
+          <List>
+            {
+              CURRENCIES.map(function (l) {
+                return (
+                  <div>
+                    <ListItem id="setcurr"
+                      onClick={function () {
+                        this.props.setCurrency(l)
+                        this.props.navigator.popPage()
+                      }.bind(this)}
+                      tappable
+                    >
+                      { l }
+                    </ListItem>
+                  </div>
+                )
+              }.bind(this))
+            }
+          </List>
+        </div>
       </Page>
     )
   }
