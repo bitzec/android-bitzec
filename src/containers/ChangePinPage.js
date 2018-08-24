@@ -33,13 +33,11 @@ class ChangePinPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { changePinLang }
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )

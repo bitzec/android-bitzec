@@ -34,13 +34,11 @@ class AddressInfoPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { addressLang }
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -52,12 +50,12 @@ class AddressInfoPage extends React.Component {
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px', textAlign: 'center', background: '#515151', width:'100%', height:'100%'}}>
+        <div style={{padding: '12px 12px 0 12px', textAlign: 'center'}}>
           <p>
             <QRCode value={ this.props.context.address }/>
           </p>
 
-          <p id="addressp">
+          <p>
             { this.props.context.address }
           </p>
 

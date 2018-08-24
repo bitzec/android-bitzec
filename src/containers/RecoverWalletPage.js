@@ -4,6 +4,7 @@ import React from 'react'
 import {
   Page,
   Toolbar,
+  ToolbarButton,
   BackButton,
   Button,
   Icon,
@@ -13,6 +14,8 @@ import {
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import { setQrScanning } from '../actions/Context'
 
 import { phraseToSecretItems } from '../utils/wallet'
 import { setSecretItems, setSecretPhrase } from '../actions/Secrets'
@@ -32,6 +35,67 @@ class RecoverWalletPage extends React.Component {
     }
 
     this.newSecrets = this.newSecrets.bind(this)
+    this.handleQRScan = this.handleQRScan.bind(this)
+    this.safeReleaseCamera = this.safeReleaseCamera.bind(this)
+  }
+
+  safeReleaseCamera () {
+    // Destroy QR scanner if user goes back
+    // while scanning
+    if (this.props.context.qrScanning) {
+      QRScanner.destroy()
+      this.props.setQrScanning(false)
+    }
+  }
+
+  componentWillUnmount () {
+    this.safeReleaseCamera()
+  }
+
+  handleQRScan () {
+    // Prepare QR Scanner
+    QRScanner.prepare(function (err, status) {
+      // Oh no!
+      if (err) {
+        alert(JSON.stringify(err))
+      }
+
+      // If we are authorized to scan, then only do we invoke
+      // the scan method
+      if (status.authorized) {
+        // Start scanning
+        var QRPhrase = ''
+        QRScanner.scan(function (err, QRPhrase) {
+          // an error occurred, or the scan was canceled (error code `6`)
+          if (err) {
+            alert(JSON.stringify(err))
+          } else {
+            //The scan completed, display the contents of the QR code
+            //this.handleLoadWallet(QRPhrase)
+            this.setState({ tempSecretPhrase: QRPhrase })
+
+          }
+
+          // Set finished scanning
+          this.props.setQrScanning(false)
+          QRScanner.destroy()
+        }.bind(this))
+
+        // Show scanning preview
+        QRScanner.show()
+
+        // Set transparency
+        this.props.setQrScanning(true)
+      } else if (status.denied) {
+        const CUR_LANG = this.props.settings.language
+        alert(TRANSLATIONS[CUR_LANG].SendPage.noCameraPermissions)
+        QRScanner.openSettings()
+      } else {
+        // we didn't get permission, but we didn't get permanently denied. (On
+        // Android, a denial isn't permanent unless the user checks the "Don't
+        // ask again" box.) We can ask again at the next relevant opportunity.
+      }
+    }.bind(this))
   }
 
   newSecrets () {
@@ -63,13 +127,22 @@ class RecoverWalletPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { TRANSLATIONS[CUR_LANG].RecoverExistingWalletPage.title }
         </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='right'>
+          <ToolbarButton onClick={() => {
+            try {
+              this.handleQRScan()
+            } catch (err) {
+              alert(JSON.stringify(err))
+            }
+          }}>
+            <Icon icon='ion-camera' />
+          </ToolbarButton>
         </div>
       </Toolbar>
     )
@@ -83,9 +156,34 @@ class RecoverWalletPage extends React.Component {
     const confirmUnderstandLang = TRANSLATIONS[CUR_LANG].RecoverExistingWalletPage.confirmUnderstand
     const recoverLang = TRANSLATIONS[CUR_LANG].RecoverExistingWalletPage.recover
 
+    const pageOpacity = this.props.context.qrScanning ? '0.4' : '1.0'
+    const pageStyle = this.props.context.qrScanning ? { opacity: pageOpacity, visibility: 'visible', transition: 'all 0.1s ease-out', WebkitTransform: 'translateZ(0)' } : {}
+
+
     return (
-      <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{padding: '12px 12px 0 12px', color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
+      <Page
+        style={pageStyle}
+        renderToolbar={this.renderToolbar.bind(this)}>
+      {
+        this.props.context.qrScanning
+        ? (
+        <div style={{ height: '100%', opacity: '0.4' }}>
+          <ons-row style={{ height: '30%' }}>
+            <ons-col></ons-col>
+          </ons-row>
+          <ons-row style={{ height: '40%' }}>
+            <ons-col width="25%"></ons-col>
+            <ons-col
+              style={{ border: '5px solid red' }}>
+            </ons-col>
+            <ons-col width="25%"></ons-col>
+          </ons-row>
+          <ons-row style={{ height: '30%' }}>
+          </ons-row>
+        </div>
+      ) : (
+
+        <div style={{padding: '12px 12px 0 12px'}}>
           <p>
             {secretPhraseLang}:<br/><br/>
             <textarea
@@ -98,7 +196,7 @@ class RecoverWalletPage extends React.Component {
 
           <p>
             <label className="left">
-              <Checkbox id="checkboxes"
+              <Checkbox
                 onChange={(e) => {
                   this.setState({
                     confirmRecover: !this.state.confirmRecover
@@ -116,7 +214,7 @@ class RecoverWalletPage extends React.Component {
             this.state.recovering
               ? <Icon icon='spinner' spin/>
               : (
-                <Button id="RedButton"
+                <Button
                   onClick={() => this.newSecrets()}
                   disabled={!this.state.confirmRecover || this.state.tempSecretPhrase.length < 16}
                   style={{width: '100%', textAlign: 'center'}}
@@ -126,7 +224,7 @@ class RecoverWalletPage extends React.Component {
               )
           }
         </div>
-
+        )}
         <Dialog
           isOpen={this.state.dialogOpen}
           onCancel={() => {
@@ -146,12 +244,14 @@ class RecoverWalletPage extends React.Component {
             >Cool</Button>
           </p>
         </Dialog>
+
       </Page>
     )
   }
 }
 
 RecoverWalletPage.propTypes = {
+  context: PropTypes.object.isRequired,
   secrets: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
@@ -159,13 +259,15 @@ RecoverWalletPage.propTypes = {
   setSecretPhrase: PropTypes.func.isRequired,
   setAddress: PropTypes.func.isRequired,
   setAddressValue: PropTypes.func.isRequired,
-  setPrivateKey: PropTypes.func.isRequired
+  setPrivateKey: PropTypes.func.isRequired,
+  setQrScanning: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
   return {
     secrets: state.secrets,
-    settings: state.settings
+    settings: state.settings,
+    context: state.context
   }
 }
 
@@ -177,7 +279,8 @@ function matchDispatchToProps (dispatch) {
       setSecretPhrase,
       setAddress,
       setAddressValue,
-      setPrivateKey
+      setPrivateKey,
+      setQrScanning
     },
     dispatch
   )

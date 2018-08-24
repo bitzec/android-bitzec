@@ -15,6 +15,9 @@ git checkout master
 yarn install
 cordova plugin add cordova-plugin-qrscanner cordova-plugin-file cordova-plugin-http cordova-clipboard cordova-plugin-inappbrowser cordova-plugin-device cordova-plugin-wkwebview-engine cordova-plugin-whitelist
 cordova plugin add cordova-plugin-google-analytics
+cordova plugin add cordova-plugin-splashscreen
+cordova plugin add cordova-plugin-statusbar
+cordova plugin add cordova-plugin-disable-ios11-statusbar
 ```
 
 ## Android

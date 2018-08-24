@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 
 import { setContacts } from '../actions/Contacts'
 import { setSecretPhrase, setSecretItems } from '../actions/Secrets'
-import { setLanguage, setCurrency, setWalletPin, setInsightAPI } from '../actions/Settings'
+import { setLanguage, setCurrency, setWalletPin, setInsightAPI, setSaveData } from '../actions/Settings'
 
 import { ZENCASH_MOBILE_SAVE_PATH, ZENCASH_MOBILE_CONTACTS_PATH, readFromFile } from '../utils/persistentStorage'
 import { phraseToSecretItems } from '../utils/wallet'
@@ -40,13 +40,24 @@ class App extends React.Component {
       hasExistingWallet: false,
       hasExistingPin: false,
       hasInputPin: false,
-      readSavedFile: false
+      readSavedFile: false,
+      parseError: false,
+      stringData: ''
     }
   }
 
   componentDidMount () {
     readFromFile(ZENCASH_MOBILE_CONTACTS_PATH, (data) => {
       // Get contact list
+
+      //hacky fix to duplicate json data saved to contacts file on iOS.
+      //investigate permanent fix
+      if (data.length>0) {
+        while (data.indexOf('contacts') !== data.lastIndexOf('contacts')) {
+            data = data.substring(0, data.lastIndexOf('contacts')-4)
+        }
+      }
+
       try {
         data = JSON.parse(data)
       } catch (err) {
@@ -55,72 +66,127 @@ class App extends React.Component {
       this.props.setContacts(data.contacts)
     }, () => {})
 
-    readFromFile(ZENCASH_MOBILE_SAVE_PATH, (data) => {
-      // If errors while we're reading the JSOn
-      // then just assume its empty
-      try {
-        data = JSON.parse(data)
-      } catch (err) {
-        data = {}
-      }
+      readFromFile(ZENCASH_MOBILE_SAVE_PATH, (data) => {
+        // If errors while we're reading the JSOn
+        // then just assume its empty
 
-      // Get secret phrase
-      if (data.secretPhrase !== undefined) {
-        const secretPhrase = data.secretPhrase
-        const secretItems = phraseToSecretItems(secretPhrase)
-
-        this.props.setSecretItems(secretItems)
-        this.props.setSecretPhrase(secretPhrase)
-
-        this.setState({
-          hasExistingWallet: true
-        })
-      }
-
-      // Get settings
-      if (data.settings !== undefined) {
-        if (data.settings.language !== undefined) {
-          const settingsLanguage = data.settings.language
-          this.props.setLanguage(settingsLanguage)
+        //hacky fix to duplicate json data saved to setting file on iOS.
+        //investigate permanent fix
+        if (data.length>0) {
+          while (data.indexOf('secretPhrase') !== data.lastIndexOf('secretPhrase')) {
+              data = data.substring(0, data.lastIndexOf('secretPhrase')-4)
+          }
         }
 
-        if (data.settings.insightAPI !== undefined) {
-          const settingsLanguage = data.settings.insightAPI
-          this.props.setInsightAPI(settingsLanguage)
+        this.setState({stringData: 'JSON file ' + data})
+
+        try {
+          data = JSON.parse(data)
+        } catch (err) {
+          //if (data.length>0) {
+          //    this.setState({parseError: true})
+          //} else {
+            data = {}
+          //}
         }
 
-        if (data.settings.currency !== undefined && data.settings.currency !== null) {
-          const settingsCurrency = data.settings.currency
-          this.props.setCurrency(settingsCurrency)
-        }
+        // Get secret phrase
+        if (data.secretPhrase !== undefined) {
+          const secretPhrase = data.secretPhrase
+          const secretItems = phraseToSecretItems(secretPhrase)
 
-        if (data.settings.pin !== undefined && data.settings.pin !== null) {
-          const settingsPin = data.settings.pin
-          this.props.setWalletPin(settingsPin)
+          this.props.setSecretItems(secretItems)
+          this.props.setSecretPhrase(secretPhrase)
 
           this.setState({
-            hasExistingPin: true
+            hasExistingWallet: true
           })
         }
-      }
 
-      this.setState({
-        readSavedFile: true
-      })
-    }, (err) => {
-      // This means we don't have the file
-      this.setState({
-        readSavedFile: true
-      })
+        // Get settings
+        if (data.settings !== undefined) {
+          if (data.settings.language !== undefined) {
+            const settingsLanguage = data.settings.language
+            this.props.setLanguage(settingsLanguage)
+          }
 
-      // Cordova plugin might not work for
-      // All api versions. in the event...
-      // alert('Unable to read file. Error: ' + JSON.stringify(err))
-      console.log(err) // Just to stop eslint from complaining
-    })
+          if (data.settings.insightAPI !== undefined) {
+            const settingsLanguage = data.settings.insightAPI
+            this.props.setInsightAPI(settingsLanguage)
+          }
+
+          if (data.settings.currency !== undefined && data.settings.currency !== null) {
+            const settingsCurrency = data.settings.currency
+            this.props.setCurrency(settingsCurrency)
+          }
+
+          if (data.settings.pin !== undefined && data.settings.pin !== null) {
+            const settingsPin = data.settings.pin
+            this.props.setWalletPin(settingsPin)
+
+            this.setState({
+              hasExistingPin: true
+            })
+          }
+        }
+
+        //console.log('file read' + i.toString())
+        if (this.state.parseError === false) {
+          this.setState({
+            readSavedFile: true
+          })
+        }
+      }, (err) => {
+        //console.log('file not read' + i.toString())
+
+        if (this.state.parseError === false) {
+          this.setState({
+            readSavedFile: true
+          })
+        }
+
+        // Cordova plugin might not work for
+        // All api versions. in the event...
+        // alert('Unable to read file. Error: ' + JSON.stringify(err))
+        console.log(err) // Just to stop eslint from complaining
+      })
+    //}
+    //this.props.setSaveData(true)
   }
 
+
+
   render () {
+
+    var doPause = new Date();
+    var doResume = new Date();
+
+    // Wait for device API libraries to load
+    //
+    // Add the deviceready event
+    document.addEventListener("deviceready", function(){
+
+        // attach events
+        document.addEventListener("resume", onResume, false);
+        document.addEventListener("pause", onPause, false);
+
+    }, false);
+
+    function onPause() {
+        doPause = new Date();
+        doResume = new Date();
+    }
+
+    function onResume() {
+        setTimeout( function() {
+          doResume = new Date();
+          console.log('timeout triggered')
+          if (((doResume - doPause) / 1000)>60) {
+            location.reload();
+        }
+      },0);
+    }
+
     return (
       this.state.readSavedFile
         ? (
@@ -130,6 +196,7 @@ class App extends React.Component {
                 ? (
                   this.state.hasExistingWallet
                     ? (
+
                       <Navigator
                         renderPage={renderPage}
                         initialRoute={{ component: MainPage, key: 'MAIN_PAGE' }}
@@ -154,9 +221,9 @@ class App extends React.Component {
           // If we haven't read the file yet
           // display a spinning animation
           <Page>
-            <div id="splash" style={{ padding: '80px 12px 0 12px', textAlign: 'center' }}>
+            <div style={{ padding: '80px 12px 0 12px', textAlign: 'center' }}>
               <img src={ZENCASH_IMG} style={{ width: '30%' }} /><br />
-              <Icon id="splashicon" icon='spinner' spin />
+              <Icon icon='spinner' spin />
             </div>
           </Page>
         )
@@ -173,7 +240,8 @@ App.propTypes = {
   setContacts: PropTypes.func.isRequired,
   context: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
-  setInsightAPI: PropTypes.func.isRequired
+  setInsightAPI: PropTypes.func.isRequired,
+  setSaveData: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
@@ -192,7 +260,8 @@ function matchDispatchToProps (dispatch) {
       setLanguage,
       setCurrency,
       setWalletPin,
-      setInsightAPI
+      setInsightAPI,
+      setSaveData
     },
     dispatch
   )

@@ -39,3 +39,6 @@ plugins
 .vscode/
 dist/
 lib/
+
+#Apple Files
+.DS_Store

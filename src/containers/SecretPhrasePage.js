@@ -9,6 +9,8 @@ import {
 
 import { connect } from 'react-redux'
 
+import QRCode from 'qrcode.react'
+
 import TRANSLATIONS from '../translations'
 
 class SecretPhrasePage extends React.Component {
@@ -24,13 +26,11 @@ class SecretPhrasePage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { TRANSLATIONS[CUR_LANG].SecretPhrasePage.title }
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -39,19 +39,25 @@ class SecretPhrasePage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{background: '#515151', width:'100%', height:'100%'}}>
-          <ons-row>
-            <div style={{padding: '12px 12px 0 12px', textAlign: 'center', width: '100%'}}>
-              <textarea
-                style={{width: '100%'}}
-                className="textarea" rows="3"
-                maxLength={64}
-                value={ this.props.secrets.secretPhrase }
-              >
-              </textarea>
+        <ons-row >
+          <div style={{padding: '12px 12px 0 12px', textAlign: 'center', width: '100%'}}>
+
+            <textarea
+              style={{color: '#ffd700', background: '#000000', width: '100%'}}
+              className="textarea" rows="3"
+              maxLength={64}
+              value={ this.props.secrets.secretPhrase }
+            >
+            </textarea>
+            <br/>
+            <br/>
+            <div id="qrwrapper">
+              <div id="qrbox">
+                <QRCode value={this.props.secrets.secretPhrase} />
+              </div>
             </div>
-          </ons-row>
-        </div>
+          </div>
+        </ons-row>
       </Page>
     )
   }

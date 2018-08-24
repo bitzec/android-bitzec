@@ -26,15 +26,13 @@ class ShowPrivateKeyPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>
             Back
           </BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { TRANSLATIONS[CUR_LANG].ShowPrivateKeyPage.title }
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -45,30 +43,32 @@ class ShowPrivateKeyPage extends React.Component {
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
+        <hr/>
         {
           this.props.secrets.items.map(function (i, idx) {
             return (
-              <div  id="privatekeys" key={idx}>
-                <ons-row id="privatekeysrow">
-                  <ons-col id="privatekeyscol">
-                    <p id="privatekeysp">
+              <div key={idx}>
+                <ons-row style={{textAlign: 'center'}}>
+                  <ons-col width={'50%'}>
+                    <div>
                       { TRANSLATIONS[CUR_LANG].General.privateKey }<br/>
                       <QRCode value={i.privateKey} />
-                    </p>
-                    <p id="privatekeysp">
-                      <textarea id="privatekeysp" disabled value={i.privateKey}></textarea>
+                    </div>
+                    <p style={{fontSize: '12px'}}>
+                      <textarea rows="4" style={{color: '#ffd700', background: '#000000', overflowWrap: 'break-word'}} value={i.privateKey}></textarea>
                     </p>
                   </ons-col>
-                  <ons-col id="privatekeyscol">
-                    <p id="privatekeysp">
+                  <ons-col width={'50%'}>
+                    <div>
                       { TRANSLATIONS[CUR_LANG].General.address }<br/>
                       <QRCode value={i.address} />
-                    </p>
-                    <p id="privatekeysp">
-                      <textarea id="privatekeysp" disabled value={i.address}></textarea>
+                    </div>
+                    <p style={{fontSize: '12px'}}>
+                        <textarea rows="4" style={{color: '#ffd700', background: '#000000', overflowWrap: 'break-word'}} value={i.address}></textarea>
                     </p>
                   </ons-col>
                 </ons-row>
+                <hr/>
               </div>
             )
           })

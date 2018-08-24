@@ -32,43 +32,37 @@ const getContactsList = (navigator, contacts, selectContact) => {
     <Page
       renderToolbar={() => (
         <Toolbar>
-          <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+          <div className='left'>
             <BackButton onClick={() => navigator.popPage()}>Back</BackButton>
-          </div>
-          <div className='center' style={{color: '#ffd700', background: '#000000'}}>
-          </div>
-          <div className='right' style={{color: '#ffd700', background: '#000000'}}>
           </div>
         </Toolbar>
       )}
     >
-    <div id="mainlist" style={{width:'100%', height:'100%'}}>
-        <List style={{wordBreak: 'break-word'}}>
-          {
-            contacts.length === 0
-              ? (
-                <ListHeader id="mainlist">
-                    No contacts found
-                </ListHeader>
+      <List style={{wordBreak: 'break-word'}}>
+        {
+          contacts.length === 0
+            ? (
+              <ListHeader>
+                  No contacts found
+              </ListHeader>
+            )
+            // Sort alphabetically and map
+            : contacts.sort((a, b) => {
+              return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
+            }).map((c, idx) => {
+              return (
+                <ListItem key={idx}
+                  onClick={() => {
+                    selectContact(c.address)
+                    navigator.popPage()
+                  }}
+                  tappable>
+                  {c.name}
+                </ListItem>
               )
-              // Sort alphabetically and map
-              : contacts.sort((a, b) => {
-                return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
-              }).map((c, idx) => {
-                return (
-                  <ListItem id="mainlist" key={idx}
-                    onClick={() => {
-                      selectContact(c.address)
-                      navigator.popPage()
-                    }}
-                    tappable>
-                    {c.name}
-                  </ListItem>
-                )
-              })
-          }
-        </List>
-      </div>
+            })
+        }
+      </List>
     </Page>
   )
 
@@ -208,6 +202,7 @@ class SendPage extends React.Component {
 
           // Set finished scanning
           this.props.setQrScanning(false)
+          QRScanner.destroy()
         }.bind(this))
 
         // Show scanning preview
@@ -421,17 +416,17 @@ class SendPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={
             () => {
               this.safeReleaseCamera()
               this.props.navigator.popPage()
             }}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           {TRANSLATIONS[CUR_LANG].SendPage.title}
         </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='right'>
           <ToolbarButton onClick={() => {
             try {
               this.handleQRScan()
@@ -496,7 +491,7 @@ class SendPage extends React.Component {
               </div>
             )
             : (
-              <div style={{ padding: '12px 12px 0 12px',color: '#ffd700', background: '#515151', width:'100%', height:'100%' }}>
+              <div style={{ padding: '12px 12px 0 12px' }}>
                 <div>
                   <h3>{payToLang}&nbsp;&nbsp;
                     <Button class="LightGreyButton"
@@ -510,10 +505,11 @@ class SendPage extends React.Component {
                       }}>
                       {contactLang}
                     </Button></h3>
-                  <Input id="sendinput"
+                  <Input
                     onChange={(e) => this.setState({ addressReceive: e.target.value })}
                     value={this.state.addressReceive}
-                    style={{ width: '100%', padding: '0px 5px 0 5px'}}
+                    placeholder={addressLang}
+                    style={{ width: '100%' }}
                     float={true}
                   />
                 </div>
@@ -531,16 +527,16 @@ class SendPage extends React.Component {
                 </h3>
                 <ons-row width={'45%'} style={{ textAlign: 'center' }}>
                   <ons-col>
-                    <span style={{ fontSize: '12px'}}>
+                    <span style={{ fontSize: '12px', color: '#7f8c8d' }}>
                       {balanceLang}:&nbsp;
                       {prettyFormatPrices(this.props.context.value)}&nbsp;
                     ZER
                     </span>
-                    <Input id="sendinput"
+                    <Input
                       onChange={this.handleSendValueChange}
                       value={this.state.sendValue}
                       placeholder={amountLang}
-                      style={{ width: '100%', padding: '0px 5px 0 5px'}}
+                      style={{ width: '100%' }}
                     /><br />
                     ZER
                   </ons-col>
@@ -550,16 +546,16 @@ class SendPage extends React.Component {
                     <br />
                   </ons-col>
                   <ons-col width={'45%'}>
-                    <span style={{ fontSize: '12px'}}>
+                    <span style={{ fontSize: '12px', color: '#7f8c8d' }}>
                       {balanceLang}:&nbsp;
                       {prettyFormatPrices(this.props.context.value * this.props.context.currencyValue)}&nbsp;
                       {this.props.settings.currency}
                     </span>
-                    <Input id="sendinput"
+                    <Input
                       onChange={this.handleSendCurrencyValueChange}
                       value={this.state.sendCurrencyValue}
                       placeholder={amountLang}
-                      style={{ width: '100%', padding: '0px 5px 0 5px'}}
+                      style={{ width: '100%' }}
                     /><br />
                     {this.props.settings.currency}
                   </ons-col>
@@ -569,7 +565,7 @@ class SendPage extends React.Component {
 
                 <div>
                   <label className="left">
-                    <Checkbox id="checkboxes"
+                    <Checkbox
                       onChange={(e) => {
                         this.setState({
                           confirmSend: !this.state.confirmSend
@@ -584,7 +580,7 @@ class SendPage extends React.Component {
                   </label>
                 </div>
 
-                <br/>
+                <br />
 
                 <ons-row style={{ textAlign: 'center' }}>
                   <ons-col width={'47.5%'}>
@@ -603,7 +599,7 @@ class SendPage extends React.Component {
 
                 <p>
                   <ProgressBar
-                    style={{ width: ' 100%', height: '40px' }}
+                    style={{ width: ' 100%', height: '20px' }}
                     value={this.state.progressValue}
                   />
                 </p>

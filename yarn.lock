@@ -1563,9 +1563,9 @@ cordova-android@^6.2.3:
     q "^1.4.1"
     shelljs "^0.5.3"
 
-cordova-clipboard@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/cordova-clipboard/-/cordova-clipboard-1.1.1.tgz#8767a8c138ae840c98d20a2e0a1871ed6f4e1d0a"
+cordova-clipboard@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/cordova-clipboard/-/cordova-clipboard-1.2.1.tgz#130624356583f749abed23b380724e1d273051c8"
 
 cordova-common@^2.0.1:
   version "2.1.0"
@@ -1609,11 +1609,11 @@ cordova-plugin-inappbrowser@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-1.7.2.tgz#64763495be87eb2e7adb1a08f0209b96ea5ceee0"
 
-cordova-plugin-qrscanner@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-qrscanner/-/cordova-plugin-qrscanner-2.5.0.tgz#6d6ba13d0bb49e370daa4958d77c8aa76d8ca356"
+cordova-plugin-qrscanner@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-qrscanner/-/cordova-plugin-qrscanner-2.6.0.tgz#e981be29d024cb37c11e28bbee87ba2544a29e2a"
   dependencies:
-    qrcode-reader "^0.2.2"
+    qrcode-reader "^1.0.4"
     webrtc-adapter "^3.1.4"
 
 cordova-plugin-whitelist@^1.3.3:
@@ -4494,9 +4494,9 @@ qr.js@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
 
-qrcode-reader@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/qrcode-reader/-/qrcode-reader-0.2.2.tgz#1f202f2461d0eeed85e8794a6f44fe418dda7f87"
+qrcode-reader@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/qrcode-reader/-/qrcode-reader-1.0.4.tgz#95d9bb9e8130800361a96cb5a43124ad1d9e06b8"
 
 qrcode.react@^0.7.1:
   version "0.7.1"

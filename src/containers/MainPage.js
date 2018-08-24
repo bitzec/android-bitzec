@@ -33,7 +33,8 @@ import {
   setZenInBtcValue,
   setZenInCurrencyValue
 } from '../actions/Context'
-import { LANG_ENGLISH } from '../actions/Settings'
+
+import { LANG_ENGLISH, setSaveData } from '../actions/Settings'
 import { urlAppend, prettyFormatPrices } from '../utils/index'
 
 import AddressInfoPage from './AddressInfoPage'
@@ -49,81 +50,75 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
   const txPage = () => (
     <Page renderToolbar={() => (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => navigator.popPage()}>Back</BackButton>
-        </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )}>
-      <div style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
-        <List id="mainlist">
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.TxDetailPage.txid }</strong></ons-row>
-            <ons-row>{tx.txid}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.TxDetailPage.blockhash }</strong></ons-row>
-            <ons-row>{tx.blockhash}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.General.version }</strong></ons-row>
-            <ons-row>{tx.version}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.TxDetailPage.blockheight }</strong></ons-row>
-            <ons-row>{tx.blockheight}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.TxDetailPage.confirmations }</strong></ons-row>
-            <ons-row>{tx.confirmations}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.General.fees }</strong></ons-row>
-            <ons-row>{tx.fees}</ons-row>
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
-            {
-              tx.vin.map(function (vin, idx) {
-                return (
-                  <ons-row key={idx} style={{marginTop: '10px'}}>
-                    <ons-col width={'90%'}>
-                      { vin.addr }<br/>
-                      <span style={{color: '#ffd700'}}>({ vin.value } ZER)</span>
-                    </ons-col>
+      <List style={{wordBreak: 'break-word'}}>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.TxDetailPage.txid }</strong></ons-row>
+          <ons-row>{tx.txid}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.TxDetailPage.blockhash }</strong></ons-row>
+          <ons-row>{tx.blockhash}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.General.version }</strong></ons-row>
+          <ons-row>{tx.version}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.TxDetailPage.blockheight }</strong></ons-row>
+          <ons-row>{tx.blockheight}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.TxDetailPage.confirmations }</strong></ons-row>
+          <ons-row>{tx.confirmations}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.General.fees }</strong></ons-row>
+          <ons-row>{tx.fees}</ons-row>
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
+          {
+            tx.vin.map(function (vin, idx) {
+              return (
+                <ons-row key={idx} style={{marginTop: '10px'}}>
+                  <ons-col width={'90%'}>
+                    { vin.addr }<br/>
+                    <span style={{color: '#7f8c8d'}}>({ vin.value } ZER)</span>
+                  </ons-col>
 
-                    <ons-col width={'10%'}>
-                      <Icon icon='ion-arrow-right-c'/>
-                    </ons-col>
-                  </ons-row>
-                )
-              })
-            }
-          </ListItem>
-          <ListItem id="mainlist" tappable>
-            <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
-            {
-              tx.vout.map(function (vout, idx) {
-                return (
-                  <ons-row key={idx} style={{marginTop: '10px'}}>
-                    <ons-col width={'90%'}>
-                      { vout.scriptPubKey.addresses[0] }<br/>
-                      <span style={{color: '#ffd700'}}>({ vout.value } ZER)</span>
-                    </ons-col>
+                  <ons-col width={'10%'}>
+                    <Icon icon='ion-arrow-right-c'/>
+                  </ons-col>
+                </ons-row>
+              )
+            })
+          }
+        </ListItem>
+        <ListItem tappable>
+          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
+          {
+            tx.vout.map(function (vout, idx) {
+              return (
+                <ons-row key={idx} style={{marginTop: '10px'}}>
+                  <ons-col width={'90%'}>
+                    { vout.scriptPubKey.addresses[0] }<br/>
+                    <span style={{color: '#7f8c8d'}}>({ vout.value } ZER)</span>
+                  </ons-col>
 
-                    <ons-col width={'10%'}>
-                      <Icon icon='ion-arrow-left-c'/>
-                    </ons-col>
-                  </ons-row>
-                )
-              })
-            }
-          </ListItem>
-        </List>
-      </div>
+                  <ons-col width={'10%'}>
+                    <Icon icon='ion-arrow-left-c'/>
+                  </ons-col>
+                </ons-row>
+              )
+            })
+          }
+        </ListItem>
+      </List>
     </Page>
   )
   return txPage
@@ -273,6 +268,9 @@ class MainPage extends React.Component {
     // Dispatch every 30 seconds
     window.ga.startTrackerWithId('UA-121358093-1', 30)
 
+    console.log('Mainpage setsavedata=true')
+    this.props.setSaveData(true)
+
     if (this.props.secrets.items.length > 0) {
       const address = this.props.secrets.items[0].address
       const privateKey = this.props.secrets.items[0].privateKey
@@ -294,15 +292,15 @@ class MainPage extends React.Component {
   renderFixed () {
     return (
       <SpeedDial position='bottom right'>
-        <Fab id="mainicons">
-          <Icon id="mainicons" icon='md-plus' />
+        <Fab>
+          <Icon icon='md-plus' />
         </Fab>
 
-        <SpeedDialItem id="mainicons" onClick={() => this.gotoComponent(SendPage)}>
+        <SpeedDialItem onClick={() => this.gotoComponent(SendPage)}>
           <Icon id="planeicon" icon='ion-paper-airplane' />
         </SpeedDialItem>
-        <SpeedDialItem id="mainicons" onClick={() => this.gotoComponent(AddressInfoPage)}>
-          <Icon id="qricon" icon='ion-qr-scanner' />
+        <SpeedDialItem  onClick={() => this.gotoComponent(AddressInfoPage)}>
+            <Icon id="qricon" icon='ion-qr-scanner' />
         </SpeedDialItem>
       </SpeedDial>
     )
@@ -315,15 +313,15 @@ class MainPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <ToolbarButton onClick={() => this.setState({ splitterOpen: true })}>
             <Icon icon='ion-navicon, material:md-menu' />
           </ToolbarButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { titleLang }
         </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='right'>
           <ToolbarButton onClick={() => this.setAddressInfo(this.props.context.address)}>
             <Icon icon='ion-refresh'/>
           </ToolbarButton>
@@ -354,102 +352,104 @@ class MainPage extends React.Component {
     const pageStyle = this.props.context.qrScanning ? { opacity: pageOpacity, visibility: 'visible', transition: 'all 0.1s ease-out' } : {}
 
     return (
-      <Page id="mainslist" style={pageStyle}>
-          <Splitter id="mainlist">
-            <SplitterSide id="mainlist"
-              style={pageStyle}
-              side='left'
-              isOpen={this.state.splitterOpen}
-              onClose={(e) => this.setState({ splitterOpen: false })}
-              onOpen={(e) => this.setState({ splitterOpen: true })}
-              collapse={true}
-              width={240}
-              isSwipeable={true}>
-              <Page id="mainlist">
-                <div id="mainsplit">
-                  <List
-                    dataSource=
-                      {[
-                        {
-                          name: aboutLang,
-                          component: AboutPage
-                        },
-                        {
-                          name: contactsLang,
-                          component: ContactsPage
-                        },
-                        {
-                          name: settingsLang,
-                          component: SettingsPage
-                        }
-                      ]}
-                    renderHeader={() => <ListHeader id="settingHeader">{titleLang}</ListHeader>}
-                    renderRow={(i) =>
-                      <ListItem id="mainlist"
-                        onClick={() => this.gotoComponent(i.component)}
-                        modifier='longdivider'
-                        tappable>
-                        {i.name}
-                      </ListItem>
+      <Page
+        style={pageStyle}>
+        <Splitter>
+          <SplitterSide
+            style={pageStyle}
+            side='left'
+            isOpen={this.state.splitterOpen}
+            onClose={(e) => this.setState({ splitterOpen: false })}
+            onOpen={(e) => this.setState({ splitterOpen: true })}
+            collapse={true}
+            width={240}
+            isSwipeable={true}>
+            <Page style={{ opacity: pageOpacity }}>
+              <List
+                dataSource=
+                  {[
+                    {
+                      name: aboutLang,
+                      component: AboutPage
+                    },
+                    {
+                      name: contactsLang,
+                      component: ContactsPage
+                    },
+                    {
+                      name: settingsLang,
+                      component: SettingsPage
                     }
-                  />
-                </div>
-              </Page>
+                  ]}
+                renderHeader={() => <ListHeader style={{background: '#000000', fontSize: '16px'}}>{titleLang}</ListHeader>}
+                renderRow={(i) =>
+                  <ListItem
+                    onClick={() => this.gotoComponent(i.component)}
+                    modifier='longdivider'
+                    tappable>
+                    {i.name}
+                  </ListItem>
+                }
+              />
+
+            </Page>
+
             </SplitterSide>
 
-            <SplitterContent id="mainlist" >
-              <Page id="mainlist"
+            <SplitterContent >
+              <Page
                 style={{ opacity: pageOpacity }}
                 renderToolbar={(e) => this.renderToolbar()}
                 renderFixed={(e) => this.renderFixed()}>
-                <div id="mainsplit">
-                  <ons-row id="mainlist" style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
-                    <ons-col id="mainlist" width={'100%'}>
-                      <h1 id="mainlist" style={{marginLeft: '12px'}}>
+
+                  <ons-row style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
+                    <ons-col width={'100%'}>
+                      <h1 style={{marginLeft: '12px'}}>
                         {addressLang}<br/>
-                        <span id="mainlist" style={{marginLeft: '0px', fontSize: '50%'}}>
+                        <span style={{marginLeft: '0px', fontSize: '50%'}}>
                           {this.props.context.address}
                         </span>
                       </h1>
                     </ons-col>
                   </ons-row>
-                  <ons-row id="mainlist" style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
-                    <ons-col id="mainlist" width={'13%'}>
+                  <ons-row style={{marginTop: '0px', marginBottom: '0px', overflowWrap: 'break-word'}}>
+                    <ons-col width={'13%'}>
                     </ons-col>
-                    <ons-col id="mainlist" width={'29%'}>
-                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                    <ons-col width={'29%'}>
+                      <h5 style={{marginLeft: '12px'}}>
                         ZER<br/>
                         {
                           this.props.context.value === null
                             ? (
                               this.state.connectionError
-                                ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
+                                ? <Icon icon='ion-minus-round' />
                                 : loadingLang
                             ) : prettyFormatPrices(this.props.context.value)
                         }
                       </h5>
                     </ons-col>
-                    <ons-col id="mainlist" width={'29%'}>
-                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                    <ons-col width={'29%'}>
+                      <h5 style={{marginLeft: '12px'}}>
+
                         BTC<br/>
                         {
                           this.props.context.BTCValue === null && this.props.context.value === null
                             ? (
                               this.state.connectionError
-                                ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
+                                ? <Icon icon='ion-minus-round' />
                                 : loadingLang
                             ) : prettyFormatPrices(this.props.context.value * this.props.context.BTCValue)
                         }
                       </h5>
                     </ons-col>
-                    <ons-col id="mainlist" width={'29%'}>
-                      <h5 id="mainlist" style={{marginLeft: '12px'}}>
+                    <ons-col>
+                      <h5 style={{marginLeft: '12px'}}>
                         { this.props.settings.currency }<br/>
                         {
                           this.props.context.currencyValue === null && this.props.context.value === null
                             ? (
                               this.state.connectionError
-                                ? <Icon style={{color: '#ffd700'}} icon='ion-minus-round' />
+                                ? <Icon icon='ion-minus-round' />
                                 : loadingLang
                             ) : prettyFormatPrices(this.props.context.value * this.props.context.currencyValue, 2)
                         }
@@ -457,119 +457,119 @@ class MainPage extends React.Component {
                     </ons-col>
                   </ons-row>
 
-                  <hr/>
+              <hr/>
 
-                  <List id="mainlist">
-                    {
-                      this.state.selectedAddressScannedTxs === false
-                        ? (
-                          <ListHeader  id="mainlist">
-                            <div id="mainlist" style={{textAlign: 'center'}}>
-                              {
-                                this.state.connectionError
-                                  ? (
-                                    <div id="mainlist">
-                                      <Icon style={{color: '#ffd700'}} icon='ion-alert-circled' />&nbsp;{noConnectionLang}
-                                    </div>
-                                  ) : (<Icon style={{color: '#ffd700'}} icon='spinner' spin/>)
-                              }
-                            </div>
-                          </ListHeader>
+              <List>
+                {
+                  this.state.selectedAddressScannedTxs === false
+                    ? (
+                      <ListHeader>
+                        <div style={{textAlign: 'center'}}>
+                          {
+                            this.state.connectionError
+                              ? (
+                                <div>
+                                  <Icon icon='ion-alert-circled' />&nbsp;{noConnectionLang}
+                                </div>
+                              ) : (<Icon icon='spinner' spin/>)
+                          }
+                        </div>
+                      </ListHeader>
+                    )
+                    : this.state.selectedAddressNoTxs
+                      ? (
+                        <ListHeader>
+                          { noTxFoundLang }
+                        </ListHeader>
+                      )
+                      : this.state.selectedAddressTxs.map(function (tx) {
+                        const selectedAddress = this.props.context.address
+                        const vins = tx.vin || []
+                        const vouts = tx.vout || []
+                        var txTime = moment.unix(tx.time).local().format('lll')
+                        var txValue = 0.0
+
+                        // Double tap tx to get more info on it
+                        const txPage = getTxDetailPage(this.props.navigator, tx, CUR_LANG)
+                        const handleTxClick = () => this.gotoComponent(txPage)
+
+                        vins.forEach(function (vin) {
+                          if (vin.addr === selectedAddress) {
+                            txValue = txValue - parseFloat(vin.value)
+                          }
+                        })
+
+                        vouts.forEach(function (vout) {
+                          if (vout.scriptPubKey.addresses[0] === selectedAddress) {
+                            txValue = txValue + parseFloat(vout.value)
+                          }
+                        })
+
+                        // Don't display useless data
+                        if (parseFloat(txValue.toFixed(8)) === 0.0) {
+                          return null
+                        }
+
+                        return (
+                          <ListItem
+                            onClick={handleTxClick}
+                            tappable>
+                            <ons-row>
+                              <ons-col width={'25px'}>
+                                {
+                                  txValue > 0
+                                    ? <Icon style={{color: '#2ecc71'}} icon='ion-arrow-right-c'/>
+                                    : <Icon style={{color: '#e74c3c'}} icon='ion-arrow-left-c'/>
+                                }
+                              </ons-col>
+
+                              <ons-col>
+                                { txValue > 0 ? receivedLang : sentLang } <br/>
+                                <span style={{color: '#7f8c8d'}}>{ txTime }</span>
+                              </ons-col>
+                              <ons-col style={{textAlign: 'right', paddingRight: '12px'}}>
+                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZER
+                              </ons-col>
+                            </ons-row>
+                          </ListItem>
                         )
-                        : this.state.selectedAddressNoTxs
-                          ? (
-                            <ListHeader  id="mainlist">
-                              { noTxFoundLang }
-                            </ListHeader>
-                          )
-                          : this.state.selectedAddressTxs.map(function (tx) {
-                            const selectedAddress = this.props.context.address
-                            const vins = tx.vin || []
-                            const vouts = tx.vout || []
-                            var txTime = moment.unix(tx.time).local().format('lll')
-                            var txValue = 0.0
+                      }.bind(this))
+                }
+              </List>
 
-                            // Double tap tx to get more info on it
-                            const txPage = getTxDetailPage(this.props.navigator, tx, CUR_LANG)
-                            const handleTxClick = () => this.gotoComponent(txPage)
-
-                            vins.forEach(function (vin) {
-                              if (vin.addr === selectedAddress) {
-                                txValue = txValue - parseFloat(vin.value)
-                              }
+              <Dialog
+                isOpen={this.state.dialogSelectAddressOpen}
+                onCancel={this.toggleSelectAddressDialog}
+                animationOptions={
+                  {duration: 0.1, delay: 0.2}
+                }
+                cancelable>
+                <List>
+                  <ListHeader>{ addressLang }</ListHeader>
+                  {
+                    this.props.secrets.items.map(function (e) {
+                      return (
+                        <ListItem
+                          style={{fontSize: '14px'}}
+                          onClick={function () {
+                            this.props.setAddress(e.address)
+                            this.props.setPrivateKey(e.privateKey)
+                            this.setState({
+                              dialogSelectAddressOpen: false
                             })
-
-                            vouts.forEach(function (vout) {
-                              if (vout.scriptPubKey.addresses[0] === selectedAddress) {
-                                txValue = txValue + parseFloat(vout.value)
-                              }
-                            })
-
-                            // Don't display useless data
-                            if (parseFloat(txValue.toFixed(8)) === 0.0) {
-                              return null
-                            }
-
-                            return (
-                              <ListItem id="mainlist"
-                                onClick={handleTxClick}
-                                tappable>
-                                <ons-row id="mainlist">
-                                  <ons-col id="mainlist" width={'25px'}>
-                                    {
-                                      txValue > 0
-                                        ? <Icon style={{color: '#ffd700'}} icon='ion-arrow-right-c'/>
-                                        : <Icon style={{color: '#ffd700'}} icon='ion-arrow-left-c'/>
-                                    }
-                                  </ons-col>
-
-                                  <ons-col id="mainlist">
-                                    { txValue > 0 ? receivedLang : sentLang } <br/>
-                                    <span id="mainlist">{ txTime }</span>
-                                  </ons-col>
-                                  <ons-col id="mainlist" style={{textAlign: 'right', paddingRight: '12px'}}>
-                                    { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZER
-                                  </ons-col>
-                                </ons-row>
-                              </ListItem>
-                            )
-                          }.bind(this))
-                    }
-                  </List>
-
-                  <Dialog
-                    isOpen={this.state.dialogSelectAddressOpen}
-                    onCancel={this.toggleSelectAddressDialog}
-                    animationOptions={
-                      {duration: 0.1, delay: 0.2}
-                    }
-                    cancelable>
-                    <List id="mainlist">
-                      <ListHeader id="mainlist">{ addressLang }</ListHeader>
-                      {
-                        this.props.secrets.items.map(function (e) {
-                          return (
-                            <ListItem id="mainlist"
-                              style={{fontSize: '14px'}}
-                              onClick={function () {
-                                this.props.setAddress(e.address)
-                                this.props.setPrivateKey(e.privateKey)
-                                this.setState({
-                                  dialogSelectAddressOpen: false
-                                })
-                              }.bind(this)}
-                              tappable>
-                              { e.address }
-                            </ListItem>
-                          )
-                        }.bind(this))
-                      }
-                    </List>
-                  </Dialog>
-                </div>
-              </Page>
-            </SplitterContent>
-          </Splitter>
+                          }.bind(this)}
+                          tappable
+                        >
+                          { e.address }
+                        </ListItem>
+                      )
+                    }.bind(this))
+                  }
+                </List>
+              </Dialog>
+            </Page>
+          </SplitterContent>
+        </Splitter>
       </Page>
     )
   }
@@ -584,7 +584,8 @@ MainPage.propTypes = {
   setAddressValue: PropTypes.func.isRequired,
   setPrivateKey: PropTypes.func.isRequired,
   setZenInBtcValue: PropTypes.func.isRequired,
-  setZenInCurrencyValue: PropTypes.func.isRequired
+  setZenInCurrencyValue: PropTypes.func.isRequired,
+  setSaveData: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
@@ -603,7 +604,8 @@ function matchDispatchToProps (dispatch) {
       setAddressValue,
       setPrivateKey,
       setZenInBtcValue,
-      setZenInCurrencyValue
+      setZenInCurrencyValue,
+      setSaveData
     },
     dispatch
   )
