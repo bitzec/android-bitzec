@@ -1,150 +1,51 @@
-div {
-  box-sizing: border-box;
-}
 
 .RedButton{
-  background-color: #f44336;
+  background-color: #f44336 !important;
+  color: #ffffff !important;
+  box-shadow: 2px 3px #404040 !important;
 }
 
 .GreenButton{
-  background-color: #4CAF50;
+  background-color: #4CAF50 !important;
+  color: #ffffff !important;
+  box-shadow: 2px 3px #404040 !important;
 }
 
 .YellowButton{
-  background-color: #ffd700;
+  background-color: #ffd700 !important;
+  color: #000000 !important;
+  box-shadow: 2px 3px #404040 !important;
 }
 
 .LightGreyButton{
-  background-color: #B9B9B9;
-  color: #000000;
+  background-color: #B9B9B9 !important;
+  color: #000000 !important;
+  box-shadow: 2px 3px #404040 !important;
 }
 
-#settings {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  height: 100% !important;
-  width: 100% !important;
-  box-sizing: border-box;
-}
-
-#privatekeys {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  width: 100% !important;
-  box-sizing: border-box;
-}
-
-#privatekeysrow {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
+#qrwrapper {
   text-align: center;
 }
 
-#privatekeyscol {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-}
+#qrbox{
+  background-color: #ffffff !important;
+  box-shadow: 2px 3px #404040 !important;
+  padding: 15px !important;
+  border: 5px solid #000000 !important;
+  display: inline-block;
 
-#privatekeysp {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-  font-size: 12px;
-  border:solid 0px !important;
 }
-#addressp{
-  color: #ffd700 !important;
-}
-
-#sendinput {
-  background-color: #FFFFFF !important;
-  background: #FFFFFF !important;
-}
-
-#insite {
-  background-color: #FFFFFF !important;
-  background: #FFFFFF !important;
-}
-
-
-#checkboxes:checked{
-    background-color: #f44336 !important;
-    background: #f44336 !important;
-}
-
-#setlang {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-}
-
-#setcurr {
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-}
-
-#splash{
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-  height: 100% !important;
-  box-sizing: border-box !important;
-}
-
-#splashicon{
-  color: #ffd700 !important;
-}
-
-#mainsplit{
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-  height: 100% !important;
-  box-sizing: border-box !important;
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-#mainlist{
-  background-color: #515151 !important;
-  background: #515151 !important;
-  color: #ffd700 !important;
-}
-
-#settingHeader{
-  background-color: #000000!important;
-  background: #000000 !important;
-  color: #ffd700 !important;
-  font-size: 130% !important;
-}
-
-#mainicons{
-  color: #000000 !important;
-  background: #ffd700 !important;
-  background-color: #ffd700 !important;
-  }
 
 #qricon{
-    color: #000000 !important;
-    background: #ffd700 !important;
-    background-color: #ffd700 !important;
-    height: 55% !important;
+    padding-bottom: 5% !important;
     vertical-align: middle !important;
   }
 
 #planeicon{
-    color: #000000 !important;
-    background: #ffd700 !important;
-    background-color: #ffd700 !important;
-    height: 55% !important;
+    padding-bottom: 5% !important;
     vertical-align: middle !important;
-    padding-right: 5%
-  }
+    padding-right: 5% !important;
+}
 
 a:link {
     color: #e69500 !important;

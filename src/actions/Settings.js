@@ -109,6 +109,7 @@ export const SET_LANGUAGE = 'SET_LANGUAGE'
 export const SET_CURRENCY = 'SET_CURRENCY'
 export const SET_INSIGHT_API = 'SET_INSIGHT_API'
 export const SET_WALLET_PIN = 'SET_WALLET_PIN'
+export const SET_SAVE_DATA = 'SET_SAVE_DATA'
 
 export function setWalletPin (pin) {
   return {
@@ -135,5 +136,12 @@ export function setInsightAPI (insightAPI) {
   return {
     type: SET_INSIGHT_API,
     insightAPI
+  }
+}
+
+export function setSaveData (saveData) {
+  return {
+    type: SET_SAVE_DATA,
+    saveData
   }
 }

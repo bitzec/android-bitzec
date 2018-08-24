@@ -48,12 +48,8 @@ class VerifyPinPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
-        </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { TRANSLATIONS[this.props.settings.language].PinPage.verifyPinPageTitle }
-        </div>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -67,14 +63,16 @@ class VerifyPinPage extends React.Component {
       padding: '15px',
       fontSize: '17px',
       shadowBlur: '5px',
-      border: '2px solid #ffd700'
+      border: '2px solid #ffd700',
+      background: '#000000',
+      color: '#ffd700'
     }
     const enterYourPinLang = TRANSLATIONS[CUR_LANG].PinPage.enterYourPin
     const invalidPinLang = TRANSLATIONS[CUR_LANG].PinPage.invalidPin
-
+    //pattern='\d*'
     return (
       <Page renderToolbar={this.props.renderToolbar || this.renderToolbar}>
-        <div style={{padding: '25px 12px 0 12px', textAlign: 'center', width:'100%', height:'100%', color: '#ffd700', background: '#515151'}}>
+        <div style={{padding: '25px 12px 0 12px', textAlign: 'center'}}>
           <img src={ZENCASH_IMG} width='100'/>
           <h2>{ enterYourPinLang }</h2>
           { this.state.invalidPin ? <h4 style={{color: '#FF0000'}}>{ invalidPinLang }</h4> : null }
@@ -82,7 +80,7 @@ class VerifyPinPage extends React.Component {
           { device.platform === 'iOS'
             ? <input
               style={pinTextBoxStyle}
-              type='text' pattern='[0-9]*' onChange={(e) => this.handlePinVerify(e.target.value)} value={this.state.pin}/>
+              type='tel' onChange={(e) => this.handlePinVerify(e.target.value)} value={this.state.pin}/>
             : <input
               style={pinTextBoxStyle}
               type='number' onChange={(e) => this.handlePinVerify(e.target.value)} value={this.state.pin}/>

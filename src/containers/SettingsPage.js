@@ -4,6 +4,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { setQrScanning } from '../actions/Context'
+
 import { setLanguage, setCurrency } from '../actions/Settings'
 
 import {
@@ -41,19 +43,21 @@ class SettingsPage extends React.Component {
 
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           { titleLang }
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
   }
 
   render () {
+    // For qr scanning
+    const pageOpacity = this.props.context.qrScanning ? '0.0' : '1.0'
+    const pageStyle = this.props.context.qrScanning ? { opacity: pageOpacity, visibility: 'visible', transition: 'all 0.1s ease-out' } : {}
+
     // Translation stuff
     const CUR_LANG = this.props.settings.language
 
@@ -65,55 +69,56 @@ class SettingsPage extends React.Component {
     const recoverExistingWalletLang = TRANSLATIONS[CUR_LANG].SettingsPage.recoverExistingWallet
 
     return (
-      <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div id="settings">
-          <List style={{color: '#ffd700', background: '#515151'}}>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, SelectInsightPage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              Insight API
-            </ListItem>
-            <ListHeader style={{color: '#ffd700', background: '#515151'}}></ListHeader>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, SelectLanguagePage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              { languageLang }
-            </ListItem>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, SelectCurrencyPage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              { currencyLang }
-            </ListItem>
-            <ListHeader style={{color: '#ffd700', background: '#515151'}}></ListHeader>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, ChangePinPage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              { changePinLang }
-            </ListItem>
-            <ListHeader style={{color: '#ffd700', background: '#515151'}}></ListHeader>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, SecretPhrasePage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              { secretPhraseLang }
-            </ListItem>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, ShowPrivateKeyPage)}
-              tappable style={{color: '#ffd700', background: '#515151'}}>
-              { showPrivateKeysLang }
-            </ListItem>
-            <ListItem
-              onClick={this.gotoComponent.bind(this, RecoverWalletPage)}
-              tappable style={{color: 'red', background: '#515151'}}>
-              { recoverExistingWalletLang }
-            </ListItem>
-          </List>
-        </div>
+      <Page
+        style={pageStyle}
+        renderToolbar={this.renderToolbar.bind(this)}>
+        <List>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, SelectInsightPage)}
+            tappable>
+            Insight API
+          </ListItem>
+          <ListHeader></ListHeader>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, SelectLanguagePage)}
+            tappable>
+            { languageLang }
+          </ListItem>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, SelectCurrencyPage)}
+            tappable>
+            { currencyLang }
+          </ListItem>
+          <ListHeader></ListHeader>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, ChangePinPage)}
+            tappable>
+            { changePinLang }
+          </ListItem>
+          <ListHeader></ListHeader>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, SecretPhrasePage)}
+            tappable>
+            { secretPhraseLang }
+          </ListItem>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, ShowPrivateKeyPage)}
+            tappable>
+            { showPrivateKeysLang }
+          </ListItem>
+          <ListItem
+            onClick={this.gotoComponent.bind(this, RecoverWalletPage)}
+            tappable style={{color: 'red'}}>
+            { recoverExistingWalletLang }
+          </ListItem>
+        </List>
       </Page>
     )
   }
 }
 
 SettingsPage.propTypes = {
+  context: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired,
   setLanguage: PropTypes.func.isRequired,
@@ -122,7 +127,8 @@ SettingsPage.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    settings: state.settings
+    settings: state.settings,
+    context: state.context
   }
 }
 
@@ -131,7 +137,8 @@ function matchDispatchToProps (dispatch) {
   return bindActionCreators(
     {
       setLanguage,
-      setCurrency
+      setCurrency,
+      setQrScanning
     },
     dispatch
   )

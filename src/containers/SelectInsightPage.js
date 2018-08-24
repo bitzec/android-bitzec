@@ -26,13 +26,11 @@ class SelectInsightPage extends React.Component {
   renderToolbar () {
     return (
       <Toolbar>
-        <div className='left' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='left'>
           <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton>
         </div>
-        <div className='center' style={{color: '#ffd700', background: '#000000'}}>
+        <div className='center'>
           Insight API
-        </div>
-        <div className='right' style={{color: '#ffd700', background: '#000000'}}>
         </div>
       </Toolbar>
     )
@@ -41,32 +39,32 @@ class SelectInsightPage extends React.Component {
   render () {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
-        <div style={{color: '#ffd700', background: '#515151', width:'100%', height:'100%'}}>
-          <List style={{color: '#ffd700', background: '#515151'}}>
-          <ListItem style={{color: '#ffd700', background: '#515151', height: '10px'}} >
-          </ListItem>
+        <br/>
+        <List>
           <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
             Manual Configuration
           </ListHeader>
-            <ListItem style={{color: '#ffd700', background: '#515151'}}>
-              <Input id="insite"
-                onChange={(e) => this.props.setInsightAPI(e.target.value)}
-                value={this.props.settings.insightAPI}
-                style={{ width: '100%', padding: '0px 5px 0 5px'}}
-                float={true}
-              />
-            </ListItem>
-            <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
-              Preconfigured Nodes
-            </ListHeader>
-            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zeroapi.cryptonode.cloud/')}>
-              Team Zero Offical API
-            </ListItem>
-            <ListItem style={{color: '#ffd700', background: '#515151'}} tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
-              mining4.co.uk
-            </ListItem>
-          </List>
-        </div>
+          <ListItem>
+            <Input
+              onChange={(e) => this.props.setInsightAPI(e.target.value)}
+              value={this.props.settings.insightAPI}
+              style={{ width: '100%' }}
+              float={true}
+            />
+          </ListItem>
+          <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
+            Preconfigured Nodes
+          </ListHeader>
+          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zeroapi.cryptonode.cloud/')}>
+            Team Zero Offical API #1
+          </ListItem>
+          <ListItem tappable onClick={() => this.props.setInsightAPI('https://insight.zerocurrency.io/insight-api-zero/')}>
+            Team Zero Offical API #2
+          </ListItem>
+          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
+            mining4.co.uk
+          </ListItem>
+        </List>
       </Page>
     )
   }
