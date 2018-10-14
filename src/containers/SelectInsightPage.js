@@ -61,6 +61,8 @@ class SelectInsightPage extends React.Component {
           <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('https://insight.zerocurrency.io/insight-api-zero/')}>
             Team Zero Offical API #2
           </ListItem>
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('https://explorer.zer.zelcore.io/api/')}>
+            Zelcore API
           </ListItem>
         </List>
       </Page>
