@@ -34,6 +34,8 @@ import {
   setZenInCurrencyValue
 } from '../actions/Context'
 
+import { setInsightAPI } from '../actions/Settings'
+
 import { LANG_ENGLISH, setSaveData } from '../actions/Settings'
 import { urlAppend, prettyFormatPrices } from '../utils/index'
 
@@ -143,7 +145,10 @@ class MainPage extends React.Component {
     this.gotoComponent = this.gotoComponent.bind(this)
     this.setAddressInfo = this.setAddressInfo.bind(this)
     this.setAddressTxList = this.setAddressTxList.bind(this)
+    this.checkAPI  = this.checkAPI.bind(this)
+    this.autoSwitchAPI = this.autoSwitchAPI.bind(this)
     this.setConnectionError = this.setConnectionError.bind(this)
+
   }
 
   toggleSelectAddressDialog () {
@@ -159,7 +164,7 @@ class MainPage extends React.Component {
   }
 
   // Sets information about address
-  setAddressInfo (address) {
+  setAddressInfo (APIurl, address) {
     // Resets
     this.setConnectionError(false)
     this.props.setAddressValue(null)
@@ -167,7 +172,7 @@ class MainPage extends React.Component {
     this.props.setZenInCurrencyValue(null)
 
     // How many zen
-    const addrURL = urlAppend(this.props.settings.insightAPI, 'addr/' + address + '/')
+    const addrURL = urlAppend(APIurl, 'addr/' + address + '/')
     axios.get(addrURL)
       .then((resp) => {
         try {
@@ -207,7 +212,6 @@ class MainPage extends React.Component {
               // there is no connection
               console.log(err)
             }
-
             this.setConnectionError(true)
           })
       })
@@ -218,18 +222,17 @@ class MainPage extends React.Component {
           // there is no connection
           console.log(err)
         }
-
         this.setConnectionError(true)
       })
 
     // Sets information about tx
     // When we set address info
-    this.setAddressTxList(address, false)
+    this.setAddressTxList(APIurl, address, false)
   }
 
   // Sets information about tx
-  setAddressTxList (address, append = true) {
-    const txInfoURL = urlAppend(this.props.settings.insightAPI, 'addrs/' + address + '/txs?from=' + this.state.selectedAddressTxFrom + '&to=' + this.state.selectedAddressTxTo)
+  setAddressTxList (APIurl, address, append = true) {
+    const txInfoURL = urlAppend(APIurl, 'addrs/' + address + '/txs?from=' + this.state.selectedAddressTxFrom + '&to=' + this.state.selectedAddressTxTo)
 
     this.setState({
       selectedAddressScannedTxs: false
@@ -252,8 +255,42 @@ class MainPage extends React.Component {
           console.log(err)
         }
         this.setConnectionError(true)
+        this.props.setInsightAPI('')
       })
   }
+
+  autoSwitchAPI (address) {
+
+      const APIList = [
+        'https://zeroapi.cryptonode.cloud/',
+        'https://insight.zerocurrency.io/insight-api-zero/',
+        'https://explorer.zer.zelcore.io/api/'
+      ]
+
+      var APIurl = APIList[Math.floor(Math.random()*APIList.length)]
+      this.checkAPI(APIurl,address)
+  }
+
+  // Check Blockhash at hieght 412300 and set API
+  checkAPI (APIurl, address) {
+    const autoSwitchURL = urlAppend(this.props.settings.insightAPI, 'block-index/412300')
+    axios.get(autoSwitchURL)
+      .then((resp) => {
+      const blockHashData = resp.data
+      if (blockHashData.blockHash == '0000015b804b7d0f1fbc7f14d301c91b26413ecdf027d170c6c3194e81222028')
+        {
+          this.setAddressInfo (this.props.settings.insightAPI, address)
+        } else {
+          this.props.setInsightAPI(APIurl)
+          this.setAddressInfo (APIurl, address)
+        }
+      })
+      .catch((err) => {
+          this.props.setInsightAPI(APIurl)
+          this.setAddressInfo (APIurl, address)
+      })
+  }
+
 
   gotoComponent (c) {
     this.props.navigator.pushPage({component: c})
@@ -275,6 +312,7 @@ class MainPage extends React.Component {
       const address = this.props.secrets.items[0].address
       const privateKey = this.props.secrets.items[0].privateKey
 
+
       this.props.setAddress(address) // for the send page
       this.props.setPrivateKey(privateKey)
     }
@@ -283,9 +321,9 @@ class MainPage extends React.Component {
   componentWillReceiveProps (nextProps) {
     // Update component if either the address or the currency is updated
     if (nextProps.context.address !== this.props.context.address) {
-      this.setAddressInfo(nextProps.context.address)
+      this.autoSwitchAPI(nextProps.context.address)
     } else if (nextProps.settings.currency !== this.props.settings.currency) {
-      this.setAddressInfo(nextProps.context.address)
+      this.autoSwitchAPI(nextProps.context.address)
     }
   }
 
@@ -322,7 +360,7 @@ class MainPage extends React.Component {
           { titleLang }
         </div>
         <div className='right'>
-          <ToolbarButton onClick={() => this.setAddressInfo(this.props.context.address)}>
+          <ToolbarButton onClick={() => this.autoSwitchAPI(this.props.context.address)}>
             <Icon icon='ion-refresh'/>
           </ToolbarButton>
           <ToolbarButton onClick={(e) => this.toggleSelectAddressDialog()}>
@@ -585,7 +623,8 @@ MainPage.propTypes = {
   setPrivateKey: PropTypes.func.isRequired,
   setZenInBtcValue: PropTypes.func.isRequired,
   setZenInCurrencyValue: PropTypes.func.isRequired,
-  setSaveData: PropTypes.func.isRequired
+  setSaveData: PropTypes.func.isRequired,
+  setInsightAPI: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
@@ -605,7 +644,8 @@ function matchDispatchToProps (dispatch) {
       setPrivateKey,
       setZenInBtcValue,
       setZenInCurrencyValue,
-      setSaveData
+      setSaveData,
+      setInsightAPI
     },
     dispatch
   )
