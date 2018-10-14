@@ -73,40 +73,40 @@ class SettingsPage extends React.Component {
         style={pageStyle}
         renderToolbar={this.renderToolbar.bind(this)}>
         <List>
-          <ListItem
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, SelectInsightPage)}
             tappable>
             Insight API
           </ListItem>
-          <ListHeader></ListHeader>
-          <ListItem
+          <ListHeader id="mainlist"></ListHeader>
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, SelectLanguagePage)}
             tappable>
             { languageLang }
           </ListItem>
-          <ListItem
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, SelectCurrencyPage)}
             tappable>
             { currencyLang }
           </ListItem>
-          <ListHeader></ListHeader>
-          <ListItem
+          <ListHeader id="mainlist"></ListHeader>
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, ChangePinPage)}
             tappable>
             { changePinLang }
           </ListItem>
-          <ListHeader></ListHeader>
-          <ListItem
+          <ListHeader id="mainlist"></ListHeader>
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, SecretPhrasePage)}
             tappable>
             { secretPhraseLang }
           </ListItem>
-          <ListItem
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, ShowPrivateKeyPage)}
             tappable>
             { showPrivateKeysLang }
           </ListItem>
-          <ListItem
+          <ListItem id="mainlist"
             onClick={this.gotoComponent.bind(this, RecoverWalletPage)}
             tappable style={{color: 'red'}}>
             { recoverExistingWalletLang }

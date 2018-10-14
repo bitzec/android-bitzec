@@ -150,7 +150,7 @@ const getContactDetails = (curLang, navigator, setQrScanning, addContact, delete
         </div>
       ) : (
       <List style={{wordBreak: 'break-word'}}>
-        <ListItem>
+        <ListItem id="mainlist">
           <Input
             style={inputStyle}
             value={tmpContactName}
@@ -159,7 +159,7 @@ const getContactDetails = (curLang, navigator, setQrScanning, addContact, delete
             onChange={(e) => { tmpContactName = e.target.value }}
           />
         </ListItem>
-        <ListItem>
+        <ListItem id="mainlist">
           <Input
             style={inputStyle}
             value={tmpContactAddress}
@@ -293,7 +293,7 @@ class ContactsPage extends React.Component {
           {
             this.props.contacts.length === 0
               ? (
-                <ListHeader>
+                <ListHeader id="mainlist">
                   {noContactsLang}
                 </ListHeader>
               )
@@ -302,7 +302,7 @@ class ContactsPage extends React.Component {
                 return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
               }).map((c, idx) => {
                 return (
-                  <ListItem key={idx}
+                  <ListItem id="mainlist" key={idx}
                     onClick={this.gotoComponent.bind(this, getContactDetails(CUR_LANG, this.props.navigator, this.props.setQrScanning, this.props.addContact, this.props.deleteContact, c.name, c.address))}
                     tappable>
                     {c.name}

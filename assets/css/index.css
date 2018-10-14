@@ -47,6 +47,11 @@
     padding-right: 5% !important;
 }
 
+#mainlist{
+  background-color: #515151 !important;
+  background: #515151 !important;
+}
+
 a:link {
     color: #e69500 !important;
 }

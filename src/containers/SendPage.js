@@ -42,7 +42,7 @@ const getContactsList = (navigator, contacts, selectContact) => {
         {
           contacts.length === 0
             ? (
-              <ListHeader>
+              <ListHeader id="mainlist">
                   No contacts found
               </ListHeader>
             )
@@ -51,7 +51,7 @@ const getContactsList = (navigator, contacts, selectContact) => {
               return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
             }).map((c, idx) => {
               return (
-                <ListItem key={idx}
+                <ListItem id="mainlist" key={idx}
                   onClick={() => {
                     selectContact(c.address)
                     navigator.popPage()

@@ -45,7 +45,7 @@ class SelectLanguagePage extends React.Component {
             LANGUAGES.sort().map(function (l) {
               return (
                 <div>
-                  <ListItem
+                  <ListItem id="mainlist"
                     onClick={function () {
                       this.props.setLanguage(l)
                       this.props.navigator.popPage()

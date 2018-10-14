@@ -58,31 +58,31 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
       </Toolbar>
     )}>
       <List style={{wordBreak: 'break-word'}}>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.txid }</strong></ons-row>
           <ons-row>{tx.txid}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.blockhash }</strong></ons-row>
           <ons-row>{tx.blockhash}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.version }</strong></ons-row>
           <ons-row>{tx.version}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.blockheight }</strong></ons-row>
           <ons-row>{tx.blockheight}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.confirmations }</strong></ons-row>
           <ons-row>{tx.confirmations}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.fees }</strong></ons-row>
           <ons-row>{tx.fees}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
           {
             tx.vin.map(function (vin, idx) {
@@ -101,7 +101,7 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
             })
           }
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
           {
             tx.vout.map(function (vout, idx) {
@@ -421,7 +421,7 @@ class MainPage extends React.Component {
                   ]}
                 renderHeader={() => <ListHeader style={{background: '#000000', fontSize: '16px'}}>{titleLang}</ListHeader>}
                 renderRow={(i) =>
-                  <ListItem
+                  <ListItem id="mainlist"
                     onClick={() => this.gotoComponent(i.component)}
                     modifier='longdivider'
                     tappable>
@@ -501,7 +501,7 @@ class MainPage extends React.Component {
                 {
                   this.state.selectedAddressScannedTxs === false
                     ? (
-                      <ListHeader>
+                      <ListHeader id="mainlist">
                         <div style={{textAlign: 'center'}}>
                           {
                             this.state.connectionError
@@ -516,7 +516,7 @@ class MainPage extends React.Component {
                     )
                     : this.state.selectedAddressNoTxs
                       ? (
-                        <ListHeader>
+                        <ListHeader id="mainlist">
                           { noTxFoundLang }
                         </ListHeader>
                       )
@@ -549,7 +549,7 @@ class MainPage extends React.Component {
                         }
 
                         return (
-                          <ListItem
+                          <ListItem id="mainlist"
                             onClick={handleTxClick}
                             tappable>
                             <ons-row>
@@ -583,11 +583,11 @@ class MainPage extends React.Component {
                 }
                 cancelable>
                 <List>
-                  <ListHeader>{ addressLang }</ListHeader>
+                  <ListHeader id="mainlist">{ addressLang }</ListHeader>
                   {
                     this.props.secrets.items.map(function (e) {
                       return (
-                        <ListItem
+                        <ListItem id="mainlist"
                           style={{fontSize: '14px'}}
                           onClick={function () {
                             this.props.setAddress(e.address)
