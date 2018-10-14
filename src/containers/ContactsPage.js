@@ -201,51 +201,6 @@ class ContactsPage extends React.Component {
     this.safeReleaseCamera()
   }
 
-  /*handleQRScan () {
-    // Prepare QR Scanner
-    QRScanner.prepare(function (err, status) {
-      // Oh no!
-      if (err) {
-        alert(JSON.stringify(err))
-      }
-
-      // If we are authorized to scan, then only do we invoke
-      // the scan method
-      if (status.authorized) {
-        // Start scanning
-        var QRPhrase = ''
-        QRScanner.scan(function (err, QRPhrase) {
-          // an error occurred, or the scan was canceled (error code `6`)
-          if (err) {
-            alert(JSON.stringify(err))
-          } else {
-            //The scan completed, display the contents of the QR code
-            //this.handleLoadWallet(QRPhrase)
-            tmpContactAddress=QRPhrase
-
-          }
-
-          // Set finished scanning
-          this.props.setQrScanning(false)
-        }.bind(this))
-
-        // Show scanning preview
-        QRScanner.show()
-
-        // Set transparency
-        this.props.setQrScanning(true)
-      } else if (status.denied) {
-        //const CUR_LANG = this.props.settings.language
-        //alert(TRANSLATIONS[CUR_LANG].SendPage.noCameraPermissions)
-        QRScanner.openSettings()
-      } else {
-        // we didn't get permission, but we didn't get permanently denied. (On
-        // Android, a denial isn't permanent unless the user checks the "Don't
-        // ask again" box.) We can ask again at the next relevant opportunity.
-      }
-    }.bind(this))
-  }*/
-
   gotoComponent (c) {
     this.props.navigator.pushPage({component: c})
   }
