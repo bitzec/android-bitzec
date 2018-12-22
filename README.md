@@ -13,9 +13,7 @@ git clone https://github.com/cryptoforge/zero-mobile.github
 cd zero-Mobile
 git checkout master
 yarn install
-cordova plugin add cordova-plugin-qrscanner cordova-plugin-file cordova-plugin-http cordova-clipboard cordova-plugin-inappbrowser cordova-plugin-device cordova-plugin-wkwebview-engine cordova-plugin-whitelist
-cordova plugin add cordova-plugin-google-analytics
-cordova plugin add cordova-plugin-statusbar
+cordova plugin add cordova-plugin-qrscanner cordova-plugin-file cordova-plugin-http cordova-clipboard cordova-plugin-inappbrowser cordova-plugin-device cordova-plugin-wkwebview-engine cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-google-analytics@1.8.3
 
 ```
 
@@ -29,8 +27,7 @@ cordova run android
 ## iOS
 Requies XCode to be installed
 ```
-cordova plugin add cordova-plugin-splashscreen
-cordova plugin add cordova-plugin-disable-ios11-statusbar
+cordova plugin add cordova-plugin-splashscreen cordova-plugin-disable-ios11-statusbar
 cordova platform add ios
 cordova run ios
 ```
