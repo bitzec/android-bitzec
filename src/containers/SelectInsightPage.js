@@ -44,7 +44,7 @@ class SelectInsightPage extends React.Component {
           <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
             Manual Configuration
           </ListHeader>
-          <ListItem>
+          <ListItem id="mainlist" >
             <Input
               onChange={(e) => this.props.setInsightAPI(e.target.value)}
               value={this.props.settings.insightAPI}
@@ -55,14 +55,14 @@ class SelectInsightPage extends React.Component {
           <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
             Preconfigured Nodes
           </ListHeader>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zeroapi.cryptonode.cloud/')}>
-            Team Zero Offical API #1
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://35.242.189.203:3001/insight-api-bitzec/')}>
+            Offical API #1
           </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://insight.zerocurrency.io/insight-api-zero/')}>
-            Team Zero Offical API #2
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://35.187.215.228:3001/api/')}>
+            Offical API #2
           </ListItem>
-          <ListItem tappable onClick={() => this.props.setInsightAPI('https://zero-insight.mining4.co.uk/insight-api-zcash/')}>
-            mining4.co.uk
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://23.251.151.9:3001/api/')}>
+            Offical API #3
           </ListItem>
         </List>
       </Page>

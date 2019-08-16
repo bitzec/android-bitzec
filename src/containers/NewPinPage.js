@@ -84,9 +84,9 @@ class NewPinPage extends React.Component {
       padding: '15px',
       fontSize: '17px',
       shadowBlur: '5px',
-      border: '2px solid #ffd700',
+      border: '2px solid #339933',
       background: '#000000',
-      color: '#ffd700'
+      color: '#339933'
     }
     const setupNewPinLang = TRANSLATIONS[CUR_LANG].PinPage.setupNewPin
     const reenterPinLang = TRANSLATIONS[CUR_LANG].PinPage.reenterPin

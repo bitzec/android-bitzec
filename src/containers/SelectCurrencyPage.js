@@ -45,7 +45,7 @@ class SelectCurrencyPage extends React.Component {
             CURRENCIES.map(function (l) {
               return (
                 <div>
-                  <ListItem
+                  <ListItem id="mainlist"
                     onClick={function () {
                       this.props.setCurrency(l)
                       this.props.navigator.popPage()

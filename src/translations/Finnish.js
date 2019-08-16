@@ -13,7 +13,7 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Lähtevä'
   },
   MainPage: {
-    title: 'ZER Wallet',
+    title: 'BZC Wallet',
     value: 'Arvo',
     send: 'Lähetä',
     received: 'Vastaanotettu',
@@ -25,7 +25,7 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopioi osoite leikepöydälle'
   },
   SendPage: {
-    title: 'Lähetä ZER',
+    title: 'Lähetä BZC',
     payTo: 'Vastaanottaja',
     amountToPay: 'Lähetettävä määrä',
     balance: 'Saldo',
@@ -38,11 +38,11 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Lähetä',
     txSuccessful: 'Lähetys onnistunut! Tästä painamalla näet tapahtuman.',
-    confirmSend: 'Haluan lähettää nämä ZER',
+    confirmSend: 'Haluan lähettää nämä BZC',
     invalidAddress: 'Virheellinen vastaanottajan osoite. Vain läpinäkyvät osoitteet on sallittu.',
     invalidAmount: 'Virheellinen määrä.',
     invalidFee: 'Virheellinen palkkio. Valitse 0 :)',
-    zeroAmount: 'Määrän täytyy olla enemmän kuin 0.',
+    bitzecAmount: 'Määrän täytyy olla enemmän kuin 0.',
     notEnoughZEN: 'Lähetysosoitteen vahvistettu saldo ei riitä tapahtuman toteuttamiseen.',
     noCameraPermissions: 'Ei lupaa kameran käyttöön. Voit sallia kameran käytön puhelimen asetuksista.'
   },
@@ -79,8 +79,8 @@ export const FINNISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Vaihda PIN',
-    newPinPageTitle: 'ZER Wallet määrittäminen',
-    verifyPinPageTitle: 'ZER Wallet PIN-kysely',
+    newPinPageTitle: 'BZC Wallet määrittäminen',
+    verifyPinPageTitle: 'BZC Wallet PIN-kysely',
     setupNewPin: 'Anna uusi PIN',
     reenterPin: 'Vahvista uusi 4-numeroinen PIN',
     pinsNotSimilar: 'Annetut PIN-luvut eivät täsmää',

@@ -34,6 +34,8 @@ import {
   setZenInCurrencyValue
 } from '../actions/Context'
 
+import { setInsightAPI } from '../actions/Settings'
+
 import { LANG_ENGLISH, setSaveData } from '../actions/Settings'
 import { urlAppend, prettyFormatPrices } from '../utils/index'
 
@@ -56,39 +58,39 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
       </Toolbar>
     )}>
       <List style={{wordBreak: 'break-word'}}>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.txid }</strong></ons-row>
           <ons-row>{tx.txid}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.blockhash }</strong></ons-row>
           <ons-row>{tx.blockhash}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.version }</strong></ons-row>
           <ons-row>{tx.version}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.blockheight }</strong></ons-row>
           <ons-row>{tx.blockheight}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.TxDetailPage.confirmations }</strong></ons-row>
           <ons-row>{tx.confirmations}</ons-row>
         </ListItem>
-        <ListItem tappable>
+        <ListItem id="mainlist" tappable>
           <ons-row><strong>{ curTranslation.General.fees }</strong></ons-row>
           <ons-row>{tx.fees}</ons-row>
         </ListItem>
-        <ListItem tappable>
-          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
+        <ListItem id="mainlist" tappable>
+          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} BZC)</strong></ons-row>
           {
             tx.vin.map(function (vin, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vin.addr }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vin.value } ZER)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vin.value } BZC)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -99,15 +101,15 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
             })
           }
         </ListItem>
-        <ListItem tappable>
-          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
+        <ListItem id="mainlist" tappable>
+          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} BZC)</strong></ons-row>
           {
             tx.vout.map(function (vout, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vout.scriptPubKey.addresses[0] }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vout.value } ZER)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vout.value } BZC)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -143,7 +145,10 @@ class MainPage extends React.Component {
     this.gotoComponent = this.gotoComponent.bind(this)
     this.setAddressInfo = this.setAddressInfo.bind(this)
     this.setAddressTxList = this.setAddressTxList.bind(this)
+    this.checkAPI  = this.checkAPI.bind(this)
+    this.autoSwitchAPI = this.autoSwitchAPI.bind(this)
     this.setConnectionError = this.setConnectionError.bind(this)
+
   }
 
   toggleSelectAddressDialog () {
@@ -159,7 +164,7 @@ class MainPage extends React.Component {
   }
 
   // Sets information about address
-  setAddressInfo (address) {
+  setAddressInfo (APIurl, address) {
     // Resets
     this.setConnectionError(false)
     this.props.setAddressValue(null)
@@ -167,7 +172,7 @@ class MainPage extends React.Component {
     this.props.setZenInCurrencyValue(null)
 
     // How many zen
-    const addrURL = urlAppend(this.props.settings.insightAPI, 'addr/' + address + '/')
+    const addrURL = urlAppend(APIurl, 'addr/' + address + '/')
     axios.get(addrURL)
       .then((resp) => {
         try {
@@ -184,7 +189,7 @@ class MainPage extends React.Component {
         // Get btc value and get local currency
         // via coinmarketcap
         const curCurrency = this.props.settings.currency
-        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/zero/?convert=' + curCurrency
+        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/bzc/?convert=' + curCurrency
         axios.get(cmcZenInfoURL)
           .then((resp) => {
             try {
@@ -207,7 +212,6 @@ class MainPage extends React.Component {
               // there is no connection
               console.log(err)
             }
-
             this.setConnectionError(true)
           })
       })
@@ -218,18 +222,17 @@ class MainPage extends React.Component {
           // there is no connection
           console.log(err)
         }
-
         this.setConnectionError(true)
       })
 
     // Sets information about tx
     // When we set address info
-    this.setAddressTxList(address, false)
+    this.setAddressTxList(APIurl, address, false)
   }
 
   // Sets information about tx
-  setAddressTxList (address, append = true) {
-    const txInfoURL = urlAppend(this.props.settings.insightAPI, 'addrs/' + address + '/txs?from=' + this.state.selectedAddressTxFrom + '&to=' + this.state.selectedAddressTxTo)
+  setAddressTxList (APIurl, address, append = true) {
+    const txInfoURL = urlAppend(APIurl, 'addrs/' + address + '/txs?from=' + this.state.selectedAddressTxFrom + '&to=' + this.state.selectedAddressTxTo)
 
     this.setState({
       selectedAddressScannedTxs: false
@@ -252,8 +255,42 @@ class MainPage extends React.Component {
           console.log(err)
         }
         this.setConnectionError(true)
+        this.props.setInsightAPI('')
       })
   }
+
+  autoSwitchAPI (address) {
+
+      const APIList = [
+        'http://35.242.189.203:3001/insight-api-bitzec/',
+        'http://35.187.215.228:3001/api/',
+        'http://23.251.151.9:3001/api/'
+      ]
+
+      var APIurl = APIList[Math.floor(Math.random()*APIList.length)]
+      this.checkAPI(APIurl,address)
+  }
+
+  // Check Blockhash at hieght 412300 and set API
+  checkAPI (APIurl, address) {
+    const autoSwitchURL = urlAppend(this.props.settings.insightAPI, 'block-index/0')
+    axios.get(autoSwitchURL)
+      .then((resp) => {
+      const blockHashData = resp.data
+      if (blockHashData.blockHash == '00055119765e0230f2a135ca8f897869c5e6b05dc371160042405da1f5c3906d')
+        {
+          this.setAddressInfo (this.props.settings.insightAPI, address)
+        } else {
+          this.props.setInsightAPI(APIurl)
+          this.setAddressInfo (APIurl, address)
+        }
+      })
+      .catch((err) => {
+          this.props.setInsightAPI(APIurl)
+          this.setAddressInfo (APIurl, address)
+      })
+  }
+
 
   gotoComponent (c) {
     this.props.navigator.pushPage({component: c})
@@ -266,7 +303,7 @@ class MainPage extends React.Component {
 
   componentDidMount () {
     // Dispatch every 30 seconds
-    window.ga.startTrackerWithId('UA-121358093-1', 30)
+    window.ga.startTrackerWithId('UA-000000000-1', 30)
 
     console.log('Mainpage setsavedata=true')
     this.props.setSaveData(true)
@@ -274,6 +311,7 @@ class MainPage extends React.Component {
     if (this.props.secrets.items.length > 0) {
       const address = this.props.secrets.items[0].address
       const privateKey = this.props.secrets.items[0].privateKey
+
 
       this.props.setAddress(address) // for the send page
       this.props.setPrivateKey(privateKey)
@@ -283,9 +321,9 @@ class MainPage extends React.Component {
   componentWillReceiveProps (nextProps) {
     // Update component if either the address or the currency is updated
     if (nextProps.context.address !== this.props.context.address) {
-      this.setAddressInfo(nextProps.context.address)
+      this.autoSwitchAPI(nextProps.context.address)
     } else if (nextProps.settings.currency !== this.props.settings.currency) {
-      this.setAddressInfo(nextProps.context.address)
+      this.autoSwitchAPI(nextProps.context.address)
     }
   }
 
@@ -322,7 +360,7 @@ class MainPage extends React.Component {
           { titleLang }
         </div>
         <div className='right'>
-          <ToolbarButton onClick={() => this.setAddressInfo(this.props.context.address)}>
+          <ToolbarButton onClick={() => this.autoSwitchAPI(this.props.context.address)}>
             <Icon icon='ion-refresh'/>
           </ToolbarButton>
           <ToolbarButton onClick={(e) => this.toggleSelectAddressDialog()}>
@@ -383,7 +421,7 @@ class MainPage extends React.Component {
                   ]}
                 renderHeader={() => <ListHeader style={{background: '#000000', fontSize: '16px'}}>{titleLang}</ListHeader>}
                 renderRow={(i) =>
-                  <ListItem
+                  <ListItem id="mainlist"
                     onClick={() => this.gotoComponent(i.component)}
                     modifier='longdivider'
                     tappable>
@@ -417,7 +455,7 @@ class MainPage extends React.Component {
                     </ons-col>
                     <ons-col width={'29%'}>
                       <h5 style={{marginLeft: '12px'}}>
-                        ZER<br/>
+                        BZC<br/>
                         {
                           this.props.context.value === null
                             ? (
@@ -463,7 +501,7 @@ class MainPage extends React.Component {
                 {
                   this.state.selectedAddressScannedTxs === false
                     ? (
-                      <ListHeader>
+                      <ListHeader id="mainlist">
                         <div style={{textAlign: 'center'}}>
                           {
                             this.state.connectionError
@@ -478,7 +516,7 @@ class MainPage extends React.Component {
                     )
                     : this.state.selectedAddressNoTxs
                       ? (
-                        <ListHeader>
+                        <ListHeader id="mainlist">
                           { noTxFoundLang }
                         </ListHeader>
                       )
@@ -511,7 +549,7 @@ class MainPage extends React.Component {
                         }
 
                         return (
-                          <ListItem
+                          <ListItem id="mainlist"
                             onClick={handleTxClick}
                             tappable>
                             <ons-row>
@@ -528,7 +566,7 @@ class MainPage extends React.Component {
                                 <span style={{color: '#7f8c8d'}}>{ txTime }</span>
                               </ons-col>
                               <ons-col style={{textAlign: 'right', paddingRight: '12px'}}>
-                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZER
+                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;BZC
                               </ons-col>
                             </ons-row>
                           </ListItem>
@@ -545,11 +583,11 @@ class MainPage extends React.Component {
                 }
                 cancelable>
                 <List>
-                  <ListHeader>{ addressLang }</ListHeader>
+                  <ListHeader id="mainlist">{ addressLang }</ListHeader>
                   {
                     this.props.secrets.items.map(function (e) {
                       return (
-                        <ListItem
+                        <ListItem id="mainlist"
                           style={{fontSize: '14px'}}
                           onClick={function () {
                             this.props.setAddress(e.address)
@@ -585,7 +623,8 @@ MainPage.propTypes = {
   setPrivateKey: PropTypes.func.isRequired,
   setZenInBtcValue: PropTypes.func.isRequired,
   setZenInCurrencyValue: PropTypes.func.isRequired,
-  setSaveData: PropTypes.func.isRequired
+  setSaveData: PropTypes.func.isRequired,
+  setInsightAPI: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
@@ -605,7 +644,8 @@ function matchDispatchToProps (dispatch) {
       setPrivateKey,
       setZenInBtcValue,
       setZenInCurrencyValue,
-      setSaveData
+      setSaveData,
+      setInsightAPI
     },
     dispatch
   )

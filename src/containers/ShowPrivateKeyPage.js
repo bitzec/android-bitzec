@@ -55,7 +55,7 @@ class ShowPrivateKeyPage extends React.Component {
                       <QRCode value={i.privateKey} />
                     </div>
                     <p style={{fontSize: '12px'}}>
-                      <textarea rows="4" style={{color: '#ffd700', background: '#000000', overflowWrap: 'break-word'}} value={i.privateKey}></textarea>
+                      <textarea rows="4" style={{color: '#339933', background: '#000000', overflowWrap: 'break-word'}} value={i.privateKey}></textarea>
                     </p>
                   </ons-col>
                   <ons-col width={'50%'}>
@@ -64,7 +64,7 @@ class ShowPrivateKeyPage extends React.Component {
                       <QRCode value={i.address} />
                     </div>
                     <p style={{fontSize: '12px'}}>
-                        <textarea rows="4" style={{color: '#ffd700', background: '#000000', overflowWrap: 'break-word'}} value={i.address}></textarea>
+                        <textarea rows="4" style={{color: '#339933', background: '#000000', overflowWrap: 'break-word'}} value={i.address}></textarea>
                     </p>
                   </ons-col>
                 </ons-row>

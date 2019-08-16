@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="insight.zero.communitywallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Zero Mobile Wallet</name>
+<widget id="insight.bitzec.communitywallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Bitzec Mobile Wallet</name>
     <description>
-        Zero Mobile Wallet
+        Bitzec Mobile Wallet
     </description>
     <author email="Crypoforge.cc@gmail.com" href="https://zerocurrency.io">
         CryptoForge
@@ -40,18 +40,16 @@
     <allow-navigation href="data:*" />
     <access origin="*" />
     <allow-intent href="*" />
-    <plugin name="cordova-plugin-qrscanner" spec="^2.6.0" />
-    <plugin name="cordova-plugin-file" spec="^4.3.3" />
-    <plugin name="cordova-plugin-http" spec="^1.2.0" />
-    <plugin name="cordova-clipboard" spec="^1.2.1" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="^1.1.4" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <plugin name="cordova-plugin-disable-ios11-statusbar" spec="^1.0.0" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
+    <plugin name="cordova-plugin-qrscanner" spec="^2.6.0" />
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
+    <plugin name="cordova-plugin-http" spec="^1.2.0" />
+    <plugin name="cordova-clipboard" spec="^1.3.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
     <engine name="android" spec="^6.2.3" />
-    <engine name="ios" spec="^4.5.4" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>

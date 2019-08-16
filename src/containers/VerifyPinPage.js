@@ -63,9 +63,9 @@ class VerifyPinPage extends React.Component {
       padding: '15px',
       fontSize: '17px',
       shadowBlur: '5px',
-      border: '2px solid #ffd700',
+      border: '2px solid #339933',
       background: '#000000',
-      color: '#ffd700'
+      color: '#339933'
     }
     const enterYourPinLang = TRANSLATIONS[CUR_LANG].PinPage.enterYourPin
     const invalidPinLang = TRANSLATIONS[CUR_LANG].PinPage.invalidPin

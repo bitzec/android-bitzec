@@ -13,7 +13,7 @@ export const CHINESE_TRANSLATION: TRANSLATION_OBJ = {
     out: '输出'
   },
   MainPage: {
-    title: 'ZER 钱包',
+    title: 'BZC 钱包',
     value: '价值',
     send: '发',
     received: '收',
@@ -25,7 +25,7 @@ export const CHINESE_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: '复制地址'
   },
   SendPage: {
-    title: '发 ZER',
+    title: '发 BZC',
     payTo: '支付',
     amountToPay: '支付金额',
     balance: '余额',
@@ -38,13 +38,13 @@ export const CHINESE_TRANSLATION: TRANSLATION_OBJ = {
     max: '都',
     send: '发',
     txSuccessful: '交易成功！ 点击这里查看。',
-    confirmSend: '我确认要发送这些 ZER',
+    confirmSend: '我确认要发送这些 BZC',
     invalidAddress: '无效 `支付地址` 暂时只允许透明地址',
     invalidAmount: '无效 `数量`。',
     invalidFee: '无效 `费用`。',
-    zeroAmount: '数量要多过 0。',
-    notEnoughZEN: '您钱包不够 ZER 来做这个交易。',
-    noCameraPermissions: '你需要允许 ZER 钱包使用你的相机。'
+    bitzecAmount: '数量要多过 0。',
+    notEnoughZEN: '您钱包不够 BZC 来做这个交易。',
+    noCameraPermissions: '你需要允许 BZC 钱包使用你的相机。'
   },
   TxDetailPage: {
     txid: '交易',
@@ -79,8 +79,8 @@ export const CHINESE_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: '更改 PIN',
-    newPinPageTitle: 'ZER 钱包安装',
-    verifyPinPageTitle: 'ZER 钱包 PIN 证实',
+    newPinPageTitle: 'BZC 钱包安装',
+    verifyPinPageTitle: 'BZC 钱包 PIN 证实',
     setupNewPin: '设置新的4位数 PIN',
     reenterPin: '再次输入 PIN',
     pinsNotSimilar: '输入的 PIN 不一样',

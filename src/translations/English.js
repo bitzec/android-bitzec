@@ -13,7 +13,7 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Out'
   },
   MainPage: {
-    title: 'ZER Wallet',
+    title: 'BZC Wallet',
     value: 'Value',
     send: 'Send',
     received: 'Received',
@@ -25,7 +25,7 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Copy Address To Clipboard'
   },
   SendPage: {
-    title: 'Send ZER',
+    title: 'Send BZC',
     payTo: 'Pay To',
     amountToPay: 'Amount To Pay',
     balance: 'Balance',
@@ -38,12 +38,12 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Send',
     txSuccessful: 'Transcation successful! Click here to see your transaction.',
-    confirmSend: 'I want to send these ZER',
+    confirmSend: 'I want to send these BZC',
     invalidAddress: 'Invalid `To Address` Only transparent addresses are supported at this point in time.',
     invalidAmount: 'Invalid `Amount`.',
     invalidFee: 'Invalid `Fees`. Try 0 :)',
-    zeroAmount: 'Amount must be greater than 0.',
-    notEnoughZEN: 'Not enough confirmed ZER in account to perform transaction.',
+    bitzecAmount: 'Amount must be greater than 0.',
+    notEnoughZEN: 'Not enough confirmed BZC in account to perform transaction.',
     noCameraPermissions: 'No camera permissions. You can allow camera access in your settings.'
   },
   TxDetailPage: {
@@ -79,8 +79,8 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Change PIN',
-    newPinPageTitle: 'ZER Wallet Setup',
-    verifyPinPageTitle: 'ZER Wallet PIN Verification',
+    newPinPageTitle: 'BZC Wallet Setup',
+    verifyPinPageTitle: 'BZC Wallet PIN Verification',
     setupNewPin: 'Set up a new 4-Digit PIN',
     reenterPin: 'Re-enter your PIN',
     pinsNotSimilar: 'PINs entered do not match',

@@ -13,7 +13,7 @@ export const DUTCH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Uit'
   },
   MainPage: {
-    title: 'ZER Portefeuille',
+    title: 'BZC Portefeuille',
     value: 'Waarde',
     send: 'Verstuur',
     received: 'Ontvangen',
@@ -25,7 +25,7 @@ export const DUTCH_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopieer Adres Naar klembord'
   },
   SendPage: {
-    title: 'Stuur ZER',
+    title: 'Stuur BZC',
     payTo: 'Betaal Aan',
     amountToPay: 'Bedrag Om Te Betalen',
     balance: 'Balans',
@@ -38,12 +38,12 @@ export const DUTCH_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Max',
     send: 'Stuur',
     txSuccessful: 'Transacatie succesvol! Klik hier om jouw transactie te zien.',
-    confirmSend: 'Ik wil deze ZER verzenden',
+    confirmSend: 'Ik wil deze BZC verzenden',
     invalidAddress: 'Ongeldig `Naar Adres`. Alleen transparante adressen worden op dit moment ondersteund.',
     invalidAmount: 'Ongeldig `Bedrag`',
     invalidFee: 'Ongeldige `Kosten`. Probeer 0 :)',
-    zeroAmount: 'Bedrag moet groter zijn dan 0',
-    notEnoughZEN: 'Niet genoeg ZER om deze transactie uit te voeren.',
+    bitzecAmount: 'Bedrag moet groter zijn dan 0',
+    notEnoughZEN: 'Niet genoeg BZC om deze transactie uit te voeren.',
     noCameraPermissions: 'Geen camera toegang. U kunt de camera toegang in de instellingen beheren.'
   },
   TxDetailPage: {
@@ -79,8 +79,8 @@ export const DUTCH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Verander PIN',
-    newPinPageTitle: 'ZER Portefuille Installatiewizard',
-    verifyPinPageTitle: 'ZER Portefuille PIN Verificatie',
+    newPinPageTitle: 'BZC Portefuille Installatiewizard',
+    verifyPinPageTitle: 'BZC Portefuille PIN Verificatie',
     setupNewPin: 'Stel een nieuwe 4-cijferige PIN in',
     reenterPin: 'Voer jouw PIN nogmaals in',
     pinsNotSimilar: 'Ingevoerde PIN komt niet overeen',

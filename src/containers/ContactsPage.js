@@ -150,7 +150,7 @@ const getContactDetails = (curLang, navigator, setQrScanning, addContact, delete
         </div>
       ) : (
       <List style={{wordBreak: 'break-word'}}>
-        <ListItem>
+        <ListItem id="mainlist">
           <Input
             style={inputStyle}
             value={tmpContactName}
@@ -159,7 +159,7 @@ const getContactDetails = (curLang, navigator, setQrScanning, addContact, delete
             onChange={(e) => { tmpContactName = e.target.value }}
           />
         </ListItem>
-        <ListItem>
+        <ListItem id="mainlist">
           <Input
             style={inputStyle}
             value={tmpContactAddress}
@@ -200,51 +200,6 @@ class ContactsPage extends React.Component {
   componentWillUnmount () {
     this.safeReleaseCamera()
   }
-
-  /*handleQRScan () {
-    // Prepare QR Scanner
-    QRScanner.prepare(function (err, status) {
-      // Oh no!
-      if (err) {
-        alert(JSON.stringify(err))
-      }
-
-      // If we are authorized to scan, then only do we invoke
-      // the scan method
-      if (status.authorized) {
-        // Start scanning
-        var QRPhrase = ''
-        QRScanner.scan(function (err, QRPhrase) {
-          // an error occurred, or the scan was canceled (error code `6`)
-          if (err) {
-            alert(JSON.stringify(err))
-          } else {
-            //The scan completed, display the contents of the QR code
-            //this.handleLoadWallet(QRPhrase)
-            tmpContactAddress=QRPhrase
-
-          }
-
-          // Set finished scanning
-          this.props.setQrScanning(false)
-        }.bind(this))
-
-        // Show scanning preview
-        QRScanner.show()
-
-        // Set transparency
-        this.props.setQrScanning(true)
-      } else if (status.denied) {
-        //const CUR_LANG = this.props.settings.language
-        //alert(TRANSLATIONS[CUR_LANG].SendPage.noCameraPermissions)
-        QRScanner.openSettings()
-      } else {
-        // we didn't get permission, but we didn't get permanently denied. (On
-        // Android, a denial isn't permanent unless the user checks the "Don't
-        // ask again" box.) We can ask again at the next relevant opportunity.
-      }
-    }.bind(this))
-  }*/
 
   gotoComponent (c) {
     this.props.navigator.pushPage({component: c})
@@ -293,7 +248,7 @@ class ContactsPage extends React.Component {
           {
             this.props.contacts.length === 0
               ? (
-                <ListHeader>
+                <ListHeader id="mainlist">
                   {noContactsLang}
                 </ListHeader>
               )
@@ -302,7 +257,7 @@ class ContactsPage extends React.Component {
                 return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
               }).map((c, idx) => {
                 return (
-                  <ListItem key={idx}
+                  <ListItem id="mainlist" key={idx}
                     onClick={this.gotoComponent.bind(this, getContactDetails(CUR_LANG, this.props.navigator, this.props.setQrScanning, this.props.addContact, this.props.deleteContact, c.name, c.address))}
                     tappable>
                     {c.name}

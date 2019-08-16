@@ -17,7 +17,7 @@ import {
   ListHeader
 } from 'react-onsenui'
 
-import zencashjs from 'zencashjs'
+import bitcoinjs from 'bitgo-utxo-lib'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -42,7 +42,7 @@ const getContactsList = (navigator, contacts, selectContact) => {
         {
           contacts.length === 0
             ? (
-              <ListHeader>
+              <ListHeader id="mainlist">
                   No contacts found
               </ListHeader>
             )
@@ -51,7 +51,7 @@ const getContactsList = (navigator, contacts, selectContact) => {
               return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)
             }).map((c, idx) => {
               return (
-                <ListItem key={idx}
+                <ListItem id="mainlist" key={idx}
                   onClick={() => {
                     selectContact(c.address)
                     navigator.popPage()
@@ -255,7 +255,7 @@ class SendPage extends React.Component {
 
     // Can't send 0 satoshis
     if (satoshisToSend <= 0) {
-      errString += TRANSLATIONS[CUR_LANG].SendPage.zeroAmount
+      errString += TRANSLATIONS[CUR_LANG].SendPage.bitzecAmount
       errString += '\n\n'
     }
 
@@ -270,9 +270,6 @@ class SendPage extends React.Component {
       this.setProgressValue(0)
       return
     }
-
-    // Private key
-    const senderPrivateKey = zencashjs.address.WIFToPrivKey(this.props.context.privateKey)
 
     // Get previous transactions
     const prevTxURL = urlAppend(this.props.settings.insightAPI, 'addr/') + senderAddress + '/utxo'
@@ -308,6 +305,7 @@ class SendPage extends React.Component {
 
                 const blockHash = responseBhash.data.blockHash
 
+
                 // Iterate through each utxo
                 // append it to history
                 for (var i = 0; i < txData.length; i++) {
@@ -318,6 +316,7 @@ class SendPage extends React.Component {
                   history = history.concat({
                     txid: txData[i].txid,
                     vout: txData[i].vout,
+                    satoshis: txData[i].satoshis,
                     scriptPubKey: txData[i].scriptPubKey
                   })
 
@@ -347,16 +346,36 @@ class SendPage extends React.Component {
                   }
                 }
 
-                // Create transaction
-                var txObj = zencashjs.transaction.createRawTx(history, recipients, blockHeight, blockHash)
+                //Start building transaction
+                let network = bitcoinjs.networks['zec']
+                var keyPair = bitcoinjs.ECPair.fromWIF(this.props.context.privateKey,network)
+                var txb = new bitcoinjs.TransactionBuilder(network)
+
+                if (infoData.info.blocks  >= 5) {
+                  txb.setVersion(bitcoinjs.Transaction.ZCASH_SAPLING_VERSION)
+                  txb.setVersionGroupId(0x892F2085)
+                  txb.setExpiryHeight(infoData.info.blocks+300)
+                }
+
+                //add inputs
+                for (var j = 0; j < history.length; j++) {
+                  txb.addInput(history[j].txid, history[j].vout)
+                }
+
+                //add outputs
+                for (var k = 0; k < recipients.length; k++) {
+                  var outputScript = bitcoinjs.address.toOutputScript(recipients[k].address,network)
+                  txb.addOutput(outputScript, recipients[k].satoshis)
+                }
 
                 // Sign each history transcation
-                for (var j = 0; j < history.length; j++) {
-                  txObj = zencashjs.transaction.signTx(txObj, j, senderPrivateKey, true)
+                for (var l = 0; l < history.length; l++) {
+                  txb.sign(l,keyPair,'',bitcoinjs.Transaction.SIGHASH_SINGLE,history[l].satoshis,'')
                 }
 
                 // Convert it to hex string
-                const txHexString = zencashjs.transaction.serializeTx(txObj)
+                const txHexString = txb.build().toHex()
+
 
                 // Post it to the api
                 axios.post(sendRawTxURL,
@@ -530,7 +549,7 @@ class SendPage extends React.Component {
                     <span style={{ fontSize: '12px', color: '#7f8c8d' }}>
                       {balanceLang}:&nbsp;
                       {prettyFormatPrices(this.props.context.value)}&nbsp;
-                    ZER
+                    BZC
                     </span>
                     <Input
                       onChange={this.handleSendValueChange}
@@ -538,7 +557,7 @@ class SendPage extends React.Component {
                       placeholder={amountLang}
                       style={{ width: '100%' }}
                     /><br />
-                    ZER
+                    BZC
                   </ons-col>
                   <ons-col width={'10%'}>
                     <br />
