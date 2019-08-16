@@ -13,7 +13,7 @@ export const NORWEGIAN_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Ut'
   },
   MainPage: {
-    title: 'ZER Lommebok',
+    title: 'BZC Lommebok',
     value: 'Verdi',
     send: 'Send',
     received: 'Mottatt',
@@ -24,7 +24,7 @@ export const NORWEGIAN_TRANSLATION: TRANSLATION_OBJ = {
     copyToClipboard: 'Kopier adresse til utklippstavle'
   },
   SendPage: {
-    title: 'Send ZER',
+    title: 'Send BZC',
     payTo: 'Betal til',
     amountToPay: 'Beløp å betale',
     balance: 'Saldo',
@@ -37,12 +37,12 @@ export const NORWEGIAN_TRANSLATION: TRANSLATION_OBJ = {
     max: 'Maks',
     send: 'Send',
     txSuccessful: 'Transaksjon vellykket! Klikk her for å se din transaksjon.',
-    confirmSend: 'Jeg bekrefter at jeg vil sende disse ZERene',
+    confirmSend: 'Jeg bekrefter at jeg vil sende disse BZCene',
     invalidAddress: 'Ugyldig `Til Adresse` Kun transparente adresser støttes foreløpig.',
     invalidAmount: 'Ugyldig `Beløp`.',
     invalidFee: 'Ugyldige `Avgifter`. Forsøk 0 :)',
-    zeroAmount: 'Beløp må være høyere enn 0.',
-    notEnoughZEN: 'Ikke nok bekreftede ZER på konto for å kunne gjennomføre transaksjonen.',
+    bitzecAmount: 'Beløp må være høyere enn 0.',
+    notEnoughZEN: 'Ikke nok bekreftede BZC på konto for å kunne gjennomføre transaksjonen.',
     noCameraPermissions: 'Ikke tilgang til kameraet. Du kan gi tilgang til kameraet under instillinger.'
   },
   TxDetailPage: {
@@ -78,8 +78,8 @@ export const NORWEGIAN_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Endre PIN',
-    newPinPageTitle: 'ZER Lommebok Oppsett',
-    verifyPinPageTitle: 'ZER Lommebok PIN Bekreftelse',
+    newPinPageTitle: 'BZC Lommebok Oppsett',
+    verifyPinPageTitle: 'BZC Lommebok PIN Bekreftelse',
     setupNewPin: 'Skriv inn ny 4-sifrede PIN',
     reenterPin: 'Gjenta ny PIN',
     pinsNotSimilar: 'PINs stemmer ikke',

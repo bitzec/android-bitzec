@@ -255,7 +255,7 @@ class SendPage extends React.Component {
 
     // Can't send 0 satoshis
     if (satoshisToSend <= 0) {
-      errString += TRANSLATIONS[CUR_LANG].SendPage.zeroAmount
+      errString += TRANSLATIONS[CUR_LANG].SendPage.bitzecAmount
       errString += '\n\n'
     }
 
@@ -347,11 +347,11 @@ class SendPage extends React.Component {
                 }
 
                 //Start building transaction
-                let network = bitcoinjs.networks['zer']
+                let network = bitcoinjs.networks['zec']
                 var keyPair = bitcoinjs.ECPair.fromWIF(this.props.context.privateKey,network)
                 var txb = new bitcoinjs.TransactionBuilder(network)
 
-                if (infoData.info.blocks  >= 492850) {
+                if (infoData.info.blocks  >= 5) {
                   txb.setVersion(bitcoinjs.Transaction.ZCASH_SAPLING_VERSION)
                   txb.setVersionGroupId(0x892F2085)
                   txb.setExpiryHeight(infoData.info.blocks+300)
@@ -549,7 +549,7 @@ class SendPage extends React.Component {
                     <span style={{ fontSize: '12px', color: '#7f8c8d' }}>
                       {balanceLang}:&nbsp;
                       {prettyFormatPrices(this.props.context.value)}&nbsp;
-                    ZER
+                    BZC
                     </span>
                     <Input
                       onChange={this.handleSendValueChange}
@@ -557,7 +557,7 @@ class SendPage extends React.Component {
                       placeholder={amountLang}
                       style={{ width: '100%' }}
                     /><br />
-                    ZER
+                    BZC
                   </ons-col>
                   <ons-col width={'10%'}>
                     <br />

@@ -8,7 +8,7 @@ function phraseToSecretItems (phraseStr) {
   const seedHex = Buffer.from(phraseStr.slice(0, 64)).toString('hex')
 
   //Set Network
-  let network = bitcoinjs.networks['zer']
+  let network = bitcoinjs.networks['zec']
   //console.log('Network ' + network)
 
   // chains

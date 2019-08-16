@@ -1,6 +1,6 @@
-# ZERO Mobile
+# Bitzec Mobile
 
-ZERO mobile app built using Onsen UI, Redux, React and Webpack.
+Bitzec mobile app built using Onsen UI, Redux, React and Webpack.
 
 
 Use node v6.11.X
@@ -13,7 +13,7 @@ git clone https://github.com/cryptoforge/zero-mobile.github
 cd zero-Mobile
 git checkout master
 yarn install
-cordova plugin add cordova-plugin-qrscanner cordova-plugin-file cordova-plugin-http cordova-clipboard cordova-plugin-inappbrowser cordova-plugin-device cordova-plugin-wkwebview-engine cordova-plugin-whitelist cordova-plugin-statusbar cordova-plugin-google-analytics@1.8.3
+cordova plugin add cordova-plugin-qrscanner@2.6.0 cordova-plugin-file@4.3.3 cordova-plugin-http@1.2.0 cordova-clipboard@1.3.0 cordova-plugin-inappbrowser@1.7.2 cordova-plugin-device@1.1.7 cordova-plugin-wkwebview-engine@1.1.4 cordova-plugin-whitelist@1.3.3 cordova-plugin-statusbar@2.4.2 cordova-plugin-google-analytics@1.8.3
 
 ```
 

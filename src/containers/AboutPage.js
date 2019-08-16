@@ -36,10 +36,10 @@ class RecoverWalletPage extends React.Component {
       <Page renderToolbar={this.renderToolbar.bind(this)}>
 
         <div style={{padding: '12px 12px 0 12px', textAlign: 'center'}}>
-          <p>ZER Wallet v{VERSION}</p>
+          <p>BZC Wallet v{VERSION}</p>
           <br/>
-          <p>Author: Team Zero</p>
-          <p>Made for zerocurrency.io</p>
+          <p>Author: Bitzec Team</p>
+          <p>Made for BZC</p>
           <p>Found a bug? File it &nbsp;
             <a
               href='#'

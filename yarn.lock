@@ -1840,10 +1840,10 @@ cordova-android@^6.2.3:
     q "^1.4.1"
     shelljs "^0.5.3"
 
-cordova-clipboard@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/cordova-clipboard/-/cordova-clipboard-1.2.1.tgz#130624356583f749abed23b380724e1d273051c8"
-  integrity sha512-WTGxyQJYsgmll8wDEo0u4XevZDUH1ZH1VPoOwwNkQ8YOtCNQS8gRIIVtZ70Kan+Vo+CiUMV0oJXdNAdARb8JwQ==
+cordova-clipboard@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/cordova-clipboard/-/cordova-clipboard-1.3.0.tgz#0911da4cbdea5df2e3a769f5b3aab00e0be0e679"
+  integrity sha512-IGk4LZm/DJ0Xk/jgakHm4wa+A/lrRP3QfzMAHDG7oWLJS4ISOpfI32Wez4ndnENItRslGyBVyJyKD83CxELCAw==
 
 cordova-common@2.2.5:
   version "2.2.5"
@@ -1939,10 +1939,10 @@ cordova-plugin-inappbrowser@^1.7.2:
   resolved "https://registry.yarnpkg.com/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-1.7.2.tgz#64763495be87eb2e7adb1a08f0209b96ea5ceee0"
   integrity sha1-ZHY0lb6H6y562xoI8CCblupc7uA=
 
-cordova-plugin-qrscanner@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-qrscanner/-/cordova-plugin-qrscanner-2.6.0.tgz#e981be29d024cb37c11e28bbee87ba2544a29e2a"
-  integrity sha512-bgy+cG0HdpuSW/JxHDFQYaO46Ma8nYTjwduhhWhMmuYeljozqQ4RJcwhJQaxHnjuDi3XDz+rHkszOEOhlSG23w==
+cordova-plugin-qrscanner@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-qrscanner/-/cordova-plugin-qrscanner-2.6.2.tgz#85935dc5585b0ac0ec79c798f572f5875adde8b9"
+  integrity sha512-wUdgNgjDMNQPFEi47Ft3SRFD8eIS8pCnnIijzIRZaoVj/nhixfI/Dtna8u3IYPX4lOMdlo9GX4/7lz/Q6C0Yhw==
   dependencies:
     qrcode-reader "^1.0.4"
     webrtc-adapter "^3.1.4"

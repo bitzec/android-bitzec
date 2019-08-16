@@ -150,7 +150,7 @@ class SetupPage extends React.Component {
             )
         }
         <div className='center'>
-          ZER Wallet Setup
+          BZC Wallet Setup
         </div>
         <div className='right'>
           <ToolbarButton onClick={() => {
@@ -200,7 +200,7 @@ class SetupPage extends React.Component {
         <div style={{padding: '12px 12px 0 12px'}}>
           <p>
             <textarea
-              style={{color: '#ffd700', background: '#000000', width: '100%'}}
+              style={{color: '#339933', background: '#000000', width: '100%'}}
               onChange={(e) => this.setState({ tempSecretPhrase: e.target.value })}
               value = {this.state.tempSecretPhrase}
               className="textarea" rows="3" placeholder="secret phrase"

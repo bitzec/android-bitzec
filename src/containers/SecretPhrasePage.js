@@ -43,7 +43,7 @@ class SecretPhrasePage extends React.Component {
           <div style={{padding: '12px 12px 0 12px', textAlign: 'center', width: '100%'}}>
 
             <textarea
-              style={{color: '#ffd700', background: '#000000', width: '100%'}}
+              style={{color: '#339933', background: '#000000', width: '100%'}}
               className="textarea" rows="3"
               maxLength={64}
               value={ this.props.secrets.secretPhrase }

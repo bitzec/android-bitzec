@@ -13,8 +13,8 @@ import {
 } from '../actions/Settings'
 
 const initialSettings = {
-  insightAPI: 'https://zeroapi.cryptonode.cloud/',
-  explorerURL: 'https://zero.cryptonode.cloud/insight/',
+  insightAPI: 'http://35.242.189.203:3001/insight-api-bitzec/',
+  explorerURL: 'http://35.242.189.203:3001/insight/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
   pin: null,

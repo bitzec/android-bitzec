@@ -41,7 +41,7 @@ export type TRANSLATION_OBJ = {
     invalidAddress: string,
     invalidAmount: string,
     invalidFee: string,
-    zeroAmount: string,
+    bitzecAmount: string,
     notEnoughZEN: string,
     noCameraPermissions: string
   },

@@ -83,14 +83,14 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
           <ons-row>{tx.fees}</ons-row>
         </ListItem>
         <ListItem id="mainlist" tappable>
-          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} ZER)</strong></ons-row>
+          <ons-row><strong>{ curTranslation.General.in }&nbsp;({tx.valueIn} BZC)</strong></ons-row>
           {
             tx.vin.map(function (vin, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vin.addr }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vin.value } ZER)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vin.value } BZC)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -102,14 +102,14 @@ const getTxDetailPage = (navigator, tx, curLang = LANG_ENGLISH) => {
           }
         </ListItem>
         <ListItem id="mainlist" tappable>
-          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} ZER)</strong></ons-row>
+          <ons-row><strong>{ curTranslation.General.out } ({tx.valueOut} BZC)</strong></ons-row>
           {
             tx.vout.map(function (vout, idx) {
               return (
                 <ons-row key={idx} style={{marginTop: '10px'}}>
                   <ons-col width={'90%'}>
                     { vout.scriptPubKey.addresses[0] }<br/>
-                    <span style={{color: '#7f8c8d'}}>({ vout.value } ZER)</span>
+                    <span style={{color: '#7f8c8d'}}>({ vout.value } BZC)</span>
                   </ons-col>
 
                   <ons-col width={'10%'}>
@@ -189,7 +189,7 @@ class MainPage extends React.Component {
         // Get btc value and get local currency
         // via coinmarketcap
         const curCurrency = this.props.settings.currency
-        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/zero/?convert=' + curCurrency
+        const cmcZenInfoURL = 'https://api.coinmarketcap.com/v1/ticker/bzc/?convert=' + curCurrency
         axios.get(cmcZenInfoURL)
           .then((resp) => {
             try {
@@ -262,9 +262,9 @@ class MainPage extends React.Component {
   autoSwitchAPI (address) {
 
       const APIList = [
-        'https://zeroapi.cryptonode.cloud/',
-        'https://insight.zerocurrency.io/insight-api-zero/',
-        'https://explorer.zer.zelcore.io/api/'
+        'http://35.242.189.203:3001/insight-api-bitzec/',
+        'http://35.187.215.228:3001/api/',
+        'http://23.251.151.9:3001/api/'
       ]
 
       var APIurl = APIList[Math.floor(Math.random()*APIList.length)]
@@ -273,11 +273,11 @@ class MainPage extends React.Component {
 
   // Check Blockhash at hieght 412300 and set API
   checkAPI (APIurl, address) {
-    const autoSwitchURL = urlAppend(this.props.settings.insightAPI, 'block-index/412300')
+    const autoSwitchURL = urlAppend(this.props.settings.insightAPI, 'block-index/0')
     axios.get(autoSwitchURL)
       .then((resp) => {
       const blockHashData = resp.data
-      if (blockHashData.blockHash == '0000015b804b7d0f1fbc7f14d301c91b26413ecdf027d170c6c3194e81222028')
+      if (blockHashData.blockHash == '00055119765e0230f2a135ca8f897869c5e6b05dc371160042405da1f5c3906d')
         {
           this.setAddressInfo (this.props.settings.insightAPI, address)
         } else {
@@ -303,7 +303,7 @@ class MainPage extends React.Component {
 
   componentDidMount () {
     // Dispatch every 30 seconds
-    window.ga.startTrackerWithId('UA-121358093-1', 30)
+    window.ga.startTrackerWithId('UA-000000000-1', 30)
 
     console.log('Mainpage setsavedata=true')
     this.props.setSaveData(true)
@@ -455,7 +455,7 @@ class MainPage extends React.Component {
                     </ons-col>
                     <ons-col width={'29%'}>
                       <h5 style={{marginLeft: '12px'}}>
-                        ZER<br/>
+                        BZC<br/>
                         {
                           this.props.context.value === null
                             ? (
@@ -566,7 +566,7 @@ class MainPage extends React.Component {
                                 <span style={{color: '#7f8c8d'}}>{ txTime }</span>
                               </ons-col>
                               <ons-col style={{textAlign: 'right', paddingRight: '12px'}}>
-                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;ZER
+                                { parseFloat(Math.abs(txValue)).toFixed(8) }&nbsp;BZC
                               </ons-col>
                             </ons-row>
                           </ListItem>
