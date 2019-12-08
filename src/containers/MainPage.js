@@ -262,7 +262,7 @@ class MainPage extends React.Component {
   autoSwitchAPI (address) {
 
       const APIList = [
-        'http://35.242.189.203:3001/insight-api-bitzec/',
+        'http://108.59.85.49:3001/api/',
         'http://35.187.215.228:3001/api/',
         'http://23.251.151.9:3001/api/'
       ]
