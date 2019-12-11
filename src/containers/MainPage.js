@@ -263,8 +263,8 @@ class MainPage extends React.Component {
 
       const APIList = [
         'http://108.59.85.49:3001/api/',
-        'http://35.187.215.228:3001/api/',
-        'http://23.251.151.9:3001/api/'
+        'http://108.59.85.49:3001/api/',
+        'http://108.59.85.49:3001/api/'
       ]
 
       var APIurl = APIList[Math.floor(Math.random()*APIList.length)]

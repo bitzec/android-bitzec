@@ -55,13 +55,13 @@ class SelectInsightPage extends React.Component {
           <ListHeader style={{color: '#e69500', background: '#515151', fontSize: '120%'}}>
             Preconfigured Nodes
           </ListHeader>
-          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://35.242.189.203:3001/insight-api-bitzec/')}>
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://35.224.12.254:3001/api/')}>
             Offical API #1
           </ListItem>
-          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://35.187.215.228:3001/api/')}>
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://108.59.85.49:3001/api/')}>
             Offical API #2
           </ListItem>
-          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://23.251.151.9:3001/api/')}>
+          <ListItem id="mainlist" tappable onClick={() => this.props.setInsightAPI('http://108.59.85.49:3001/api/')}>
             Offical API #3
           </ListItem>
         </List>
