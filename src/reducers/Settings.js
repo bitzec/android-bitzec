@@ -14,7 +14,7 @@ import {
 
 const initialSettings = {
   insightAPI: 'http://34.68.13.133:3001/api/',
-  explorerURL: 'http://34.68.13.133:3001/insight/',
+  explorerURL: 'http://34.68.13.133:3001/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
   pin: null,
