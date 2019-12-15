@@ -13,8 +13,8 @@ import {
 } from '../actions/Settings'
 
 const initialSettings = {
-  insightAPI: 'http://35.224.12.254:3001/api/',
-  explorerURL: 'http://35.242.189.203:3001/insight/',
+  insightAPI: 'http://34.68.13.133:3001/api/',
+  explorerURL: 'http://34.68.13.133:3001/insight/',
   language: LANG_ENGLISH,
   currency: CURRENCY_USD,
   pin: null,
